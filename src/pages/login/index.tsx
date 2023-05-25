@@ -9,10 +9,26 @@ import {
   Link,
   Button,
   Heading,
-  Text,
+  Text,Center,
   useColorModeValue,
 } from '@chakra-ui/react';
-
+import { FaFacebook } from 'react-icons/fa';
+              
+  function FacebookButton() {
+  return (
+    <Center p={8}>
+      <Button
+        w={'full'}
+        maxW={'md'}
+        colorScheme={'facebook'}
+        leftIcon={<FaFacebook />}>
+        <Center>
+          <Text>Continue with Facebook</Text>
+        </Center>
+      </Button>
+    </Center>
+  );
+}            
 export default function SimpleCard() {
   return (
     <Flex
@@ -57,6 +73,7 @@ export default function SimpleCard() {
                 }}>
                 Sign in
               </Button>
+<FacebookButton/>
             </Stack>
           </Stack>
         </Box>

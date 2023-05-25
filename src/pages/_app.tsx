@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     readOnlyUrls: {
       [Mainnet.chainId]: process.env.MAINNET_RPC! || process.env.SEPOLIA_RPC!,
     },
-    autoConnect: true,
+    autoConnect: false,
   };
 
   return (

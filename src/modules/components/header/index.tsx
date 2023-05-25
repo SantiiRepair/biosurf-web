@@ -73,7 +73,7 @@ export default function Header() {
             fontSize={'sm'}
             fontWeight={400}
             variant={'link'}
-            href={'#'}>
+            href={'/login'}>
             Sign In
           </Button>
           <Button
@@ -82,10 +82,10 @@ export default function Header() {
             fontSize={'sm'}
             fontWeight={600}
             color={'white'}
-            bg={'pink.400'}
-            href={'#'}
+            bg={'blue.400'}
+            href={'/register'}
             _hover={{
-              bg: 'pink.300',
+              bg: 'blue.300',
             }}>
             Sign Up
           </Button>
@@ -173,7 +173,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
           justify={'flex-end'}
           align={'center'}
           flex={1}>
-          <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
+          <Icon color={'blue.400'} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
     </Link>
