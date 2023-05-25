@@ -9,11 +9,11 @@
 /coverage
 
 # next.js
-/.next/
 /out/
 
-# production
-/build
+# dev
+.package-lock.json
+yarn.lock
 
 # misc
 .DS_Store
@@ -34,5 +34,3 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.package-lock.json
-yarn.lock
