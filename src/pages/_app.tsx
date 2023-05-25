@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     autoConnect: false,
   };
 
-  return (
+  return (  
     <ChakraProvider resetCSS theme={theme}>
       <DAppProvider config={config}>
         <Head>
