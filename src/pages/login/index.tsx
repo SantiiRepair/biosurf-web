@@ -13,11 +13,11 @@ import {
   Center,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { FaFacebook, FaGoogle } from "react-icons/fa";
-
+import { FaFacebook } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 function FacebookButton() {
   return (
-    <Center p={8}>
+    <Center p={0}>
       <Button
         w={"full"}
         maxW={"md"}
@@ -34,12 +34,12 @@ function FacebookButton() {
 
 function GoogleButton() {
   return (
-    <Center p={8}>
+    <Center p={0}>
       <Button
         w={"full"}
         maxW={"md"}
         variant={"outline"}
-        leftIcon={<FaGoogle />}
+        leftIcon={<FcGoogle />}
       >
         <Center>
           <Text>Sign in with Google</Text>
