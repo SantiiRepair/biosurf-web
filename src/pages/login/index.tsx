@@ -13,9 +13,11 @@ import {
   Center,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { useRouter } from "next/router";
 
 function FacebookButton() {
   return (
@@ -54,6 +56,29 @@ function GoogleButton() {
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [ipv4, setIpv4] = useState("");
+  const router = useRouter();
+
+  useEffect(() => {
+    getIpv4();
+  }, []);
+
+  const login = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("https://biosurf-api.osc-fr1.scalingo.io/", {
+        email: email,
+        password: password,
+        ipv4: ipv4,
+      });
+      // router.push("/account");
+    } catch (error) {}
+  };
+
+  const getIpv4 = async () => {
+    const res = await axios.get("https://ipv4.jsonip.com/");
+    setIpv4(res.data.ip);
+  };
 
   return (
     <Flex
@@ -76,45 +101,48 @@ export default function Login() {
           p={8}
         >
           <Stack spacing={4}>
-            <FormControl id="email">
-              <FormLabel>Email address</FormLabel>
-              <Input
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                type="email"
-              />
-            </FormControl>
-            <FormControl id="password">
-              <FormLabel>Password</FormLabel>
-              <Input
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                type="password"
-              />
-            </FormControl>
-            <Stack spacing={10}>
-              <Stack
-                direction={{ base: "column", sm: "row" }}
-                align={"start"}
-                justify={"space-between"}
-              >
-                <Checkbox>Remember me</Checkbox>
-                <Link color={"blue.400"}>Forgot password?</Link>
+            <form onSubmit={login}>
+              <FormControl id="email">
+                <FormLabel>Email address</FormLabel>
+                <Input
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  type="email"
+                />
+              </FormControl>
+              <FormControl id="password">
+                <FormLabel>Password</FormLabel>
+                <Input
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  type="password"
+                />
+              </FormControl>
+              <Stack spacing={10}>
+                <Stack
+                  direction={{ base: "column", sm: "row" }}
+                  align={"start"}
+                  justify={"space-between"}
+                >
+                  <Checkbox>Remember me</Checkbox>
+                  <Link color={"blue.400"}>Forgot password?</Link>
+                </Stack>
+                <Button
+                  type="submit"
+                  bg={"blue.400"}
+                  color={"white"}
+                  _hover={{
+                    bg: "blue.500",
+                  }}
+                >
+                  Sign in
+                </Button>
+                <FacebookButton />
+                <GoogleButton />
               </Stack>
-              <Button
-                bg={"blue.400"}
-                color={"white"}
-                _hover={{
-                  bg: "blue.500",
-                }}
-              >
-                Sign in
-              </Button>
-              <FacebookButton />
-              <GoogleButton />
-            </Stack>
+            </form>
           </Stack>
         </Box>
       </Stack>
