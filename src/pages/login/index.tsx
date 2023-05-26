@@ -58,6 +58,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [ipv4, setIpv4] = useState("");
   const router = useRouter();
+  const baseLink = "https://drn14r-7070.csb.app";
 
   useEffect(() => {
     getIpv4();
@@ -66,7 +67,7 @@ export default function Login() {
   const login = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://biosurf-api.osc-fr1.scalingo.io/", {
+      const res = await axios.post(`${baseLink}/login`, {
         email: email,
         password: password,
         ipv4: ipv4,
