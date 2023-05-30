@@ -102,7 +102,7 @@ export default function Login() {
           p={8}
         >
           <Stack spacing={4}>
-            -
+            <form onSubmit={login}>
               <FormControl id="email">
                 <FormLabel>Email address</FormLabel>
                 <Input
@@ -140,6 +140,7 @@ export default function Login() {
                 >
                   Sign in
                 </Button>
+
                 <FacebookButton />
                 <GoogleButton />
               </Stack>
