@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/img/logo.svg" />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="description" content="CAI NFT" />
+        <meta name="description" content="Biosurf NFT" />
       </Head>
 
       <Flex direction={"column"}>

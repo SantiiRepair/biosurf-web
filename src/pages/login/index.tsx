@@ -70,7 +70,7 @@ export default function Login() {
       const res = await axios.post(`${baseLink}/login`, {
         email: email,
         password: password,
-        ipv4: ipv4,
+        // ipv4: ipv4,
       });
       // router.push("/account");
     } catch (error) {}
@@ -102,7 +102,7 @@ export default function Login() {
           p={8}
         >
           <Stack spacing={4}>
-            <form onSubmit={login}>
+            -
               <FormControl id="email">
                 <FormLabel>Email address</FormLabel>
                 <Input
