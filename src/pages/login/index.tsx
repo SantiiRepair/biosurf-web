@@ -67,11 +67,12 @@ export default function Login() {
   const login = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${baseLink}/login`, {
+      const logg = await axios.post(`${baseLink}/login`, {
         email: email,
         password: password,
         // ipv4: ipv4,
       });
+      console.log({ logg });
       // router.push("/account");
     } catch (error) {}
   };
