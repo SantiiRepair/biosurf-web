@@ -18,14 +18,26 @@ type CommentsContextType = {
   decrementUpvote: (id: number, parentId?: number) => void;
   loadComments: () => void;
   saveChanges: (newComments: Comment[]) => void;
-  reply: (parentId: number, user: any, content: string, replyingTo?: string) => void;
+  reply: (
+    parentId: number,
+    user: any,
+    content: string,
+    replyingTo?: string
+  ) => void;
   addTopLevelComment: (content: string, user: any) => void;
   deleteComment: (id: number, parentId?: number) => void;
   showDeleteDialog: boolean;
   setDeleteDialogVisibility: (visibility: boolean) => void;
   currentCommentIdx: { id: number | null; parentId: number | null };
-  setCurrentCommentIdx: (commentIdx: { id: number | null; parentId: number | null }) => void;
-  updateComment: (id: number, parentId: number | undefined, content: string) => void;
+  setCurrentCommentIdx: (commentIdx: {
+    id: number | null;
+    parentId: number | null;
+  }) => void;
+  updateComment: (
+    id: number,
+    parentId: number | undefined,
+    content: string
+  ) => void;
 };
 
 const CommentsContext = React.createContext<CommentsContextType>({
@@ -50,7 +62,8 @@ export function useComments() {
 
 function CommentsProvider({ children }: { children: ReactNode }) {
   const [comments, setComments] = useState<Comment[]>([]);
-  const [showDeleteDialog, setDeleteDialogVisibility] = useState<boolean>(false);
+  const [showDeleteDialog, setDeleteDialogVisibility] =
+    useState<boolean>(false);
   const [currentCommentIdx, setCurrentCommentIdx] = useState<{
     id: number | null;
     parentId: number | null;
@@ -95,7 +108,12 @@ function CommentsProvider({ children }: { children: ReactNode }) {
   }
 
   // NewReply
-  function reply(parentId: number, user: any, content: string, replyingTo?: string) {
+  function reply(
+    parentId: number,
+    user: any,
+    content: string,
+    replyingTo?: string
+  ) {
     let newList = [...comments];
 
     let ParentIdx = findParentIndex(parentId);
@@ -113,7 +131,11 @@ function CommentsProvider({ children }: { children: ReactNode }) {
     saveChanges(newList);
   }
 
-  function updateComment(id: number, parentId: number | undefined, content: string) {
+  function updateComment(
+    id: number,
+    parentId: number | undefined,
+    content: string
+  ) {
     let newList = [...comments];
     if (!parentId) {
       let idx = newList.findIndex((comment) => comment.id === id);
@@ -156,7 +178,9 @@ function CommentsProvider({ children }: { children: ReactNode }) {
       saveChanges(newList);
     } else {
       let ParentIdx = findParentIndex(parentId);
-      let idx = newList[ParentIdx].replies.findIndex((comment) => comment.id === id);
+      let idx = newList[ParentIdx].replies.findIndex(
+        (comment) => comment.id === id
+      );
       newList[ParentIdx].replies[idx].score++;
       saveChanges(newList);
     }
@@ -205,7 +229,7 @@ function CommentsProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <CommentsContext.Provider>
+    <CommentsContext.Provider value={value}>
       {children}
     </CommentsContext.Provider>
   );
