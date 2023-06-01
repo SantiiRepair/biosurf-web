@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
-import Comment from "Comment";
+import Comment from "./Comment";
 
 const CommentWithReplies = (CommentComponent: any, id: any, replies: Array<string>) => {
   const _buildReplies = () => {

@@ -1,18 +1,17 @@
 import { Container } from "@chakra-ui/react";
 import { useEffect } from "react";
-import "./App.css";
-import Comment from "./components/Comment";
-import CommentWithReplies from "commentwithreplies";
-import { useComments } from "useComments";
-import NewComment from "./components/NewComment";
-import AlertDialog from "./components/AlertDialog";
+import Comment from "./Comment";
+import CommentWithReplies from "./CommentWithReplies";
+import { useComments } from "../../../hooks/useComments";
+import NewComment from "./NewComment";
+import AlertDialog from "../alert/AlertDialog";
 
 function App() {
   const { comments, loadComments, showDeleteDialog } = useComments();
 
   useEffect(() => {
     loadComments();
-  }, []);
+  }, );
 
   // useEffect(() => {
   // }, [comments])

@@ -4,7 +4,7 @@ import UserAvatar from "../media/UserAvatar";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 import data from "../data.json";
 import { useComments } from "../../../hooks/useComments";
-import CommentEditor from "NewComment";
+import CommentEditor from "./NewComment";
 import IconButtonWithText from "../media/IconButtonWithText";
 import { getTimeDifference } from "../../../utils/Utils";
 
@@ -12,7 +12,7 @@ const AuthUser = data.currentUser;
 
 function Comment(
   id: number,
-  parentId: any,
+  parentId: number,
   content: any,
   score: any,
   user: any,
