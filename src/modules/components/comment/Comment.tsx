@@ -29,7 +29,7 @@ function Comment(
   const [editorMode, setEditorMode] = useState("reply");
 
   // Click Handler
-  const _handleClick = (e: event) => {
+  const _handleClick = (e: { target: { value: string } }) => {
     console.log(e.target.value);
 
     // delete
@@ -94,7 +94,7 @@ function Comment(
             <IconButtonWithText
               buttonType={"delete"}
               value={"delete"}
-              onClick={(e) => _handleClick(e)}
+              onClick={(e: { target: { value: string } }) => _handleClick(e)}
             >
               Delete
             </IconButtonWithText>
@@ -104,7 +104,7 @@ function Comment(
             <IconButtonWithText
               buttonType={"edit"}
               value={"edit"}
-              onClick={(e) => _handleClick(e)}
+              onClick={(e: { target: { value: string } }) => _handleClick(e)}
             >
               Edit
             </IconButtonWithText>
@@ -112,7 +112,7 @@ function Comment(
             <IconButtonWithText
               buttonType={"reply"}
               value={"reply"}
-              onClick={(e) => _handleClick(e)}
+              onClick={(e: { target: { value: string } }) => _handleClick(e)}
             >
               Reply
             </IconButtonWithText>
@@ -245,7 +245,9 @@ function Comment(
                     <IconButtonWithText
                       buttonType={"delete"}
                       value={"delete"}
-                      onClick={(e) => _handleClick(e)}
+                      onClick={(e: { target: { value: string } }) =>
+                        _handleClick(e)
+                      }
                     >
                       Delete
                     </IconButtonWithText>
@@ -255,7 +257,9 @@ function Comment(
                     <IconButtonWithText
                       buttonType={"edit"}
                       value={"edit"}
-                      onClick={(e) => _handleClick(e)}
+                      onClick={(e: { target: { value: string } }) =>
+                        _handleClick(e)
+                      }
                     >
                       Edit
                     </IconButtonWithText>
@@ -263,7 +267,9 @@ function Comment(
                     <IconButtonWithText
                       buttonType={"reply"}
                       value={"reply"}
-                      onClick={(e) => _handleClick(e)}
+                      onClick={(e: { target: { value: string } }) =>
+                        _handleClick(e)
+                      }
                     >
                       Reply
                     </IconButtonWithText>
