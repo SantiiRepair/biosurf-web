@@ -22,6 +22,7 @@ import {
   MenuItem,
   MenuList,
   Button,
+  Image,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -99,9 +100,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
-        </Text>
+        <Image alt="Logo" src="/images/sns-transparent.png" width={70} />
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
@@ -159,7 +158,7 @@ interface MobileProps extends FlexProps {
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
   const { Metamask, GreenDot } = useIcons();
   const { active, activateBrowserWallet, account } = useEthers();
-  
+
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -180,14 +179,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         icon={<FiMenu />}
       />
 
-      <Text
-        display={{ base: "flex", md: "none" }}
-        fontSize="2xl"
-        fontFamily="monospace"
-        fontWeight="bold"
-      >
-        Logo
-      </Text>
+      <Image alt="Logo" src="/images/sns-transparent.png" width={70} />
 
       <HStack spacing={{ base: "0", md: "6" }}>
         {active ? (
