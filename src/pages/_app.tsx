@@ -16,9 +16,9 @@ declare global {
 }
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
-  return (
-    <>
-      <SessionProvider session={session}>
+  return(
+   <>
+      {/* <SessionProvider session={session}> */}
         <DefaultSeo {...config} />
         <ChakraProvider resetCSS theme={theme}>
           <DAppProvider config={{}}>
@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
             </Flex>
           </DAppProvider>
         </ChakraProvider>
-      </SessionProvider>
+      {/* </SessionProvider> */}
     </>
   );
 }

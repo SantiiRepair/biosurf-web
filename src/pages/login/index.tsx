@@ -17,7 +17,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { useRouter } from "next/router";
+import{ useRouter } from "next/router";
+// import { signIn } from "next-auth/react";
 
 function FacebookButton() {
   return (

@@ -78,12 +78,18 @@ export default function SignUp() {
         // ipv4: ipv4,
       });
       // router.push("/account");
-    } catch (error) {}
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const getIpv4 = async () => {
-    const res = await axios.get("https://ipv4.jsonip.com/");
-    setIpv4(res.data.ip);
+    try {
+      const res = await axios.get("https://ipv4.jsonip.com/");
+      setIpv4(res.data.ip);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
