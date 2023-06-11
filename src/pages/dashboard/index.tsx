@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect } from "react";
 import {
   IconButton,
   Avatar,
@@ -36,6 +36,8 @@ import {
 import { IconType } from "react-icons";
 import { useEthers } from "@usedapp/core";
 import useIcons from "@/src/modules/components/icons";
+import { cookies } from "next/headers";
+import { useRouter } from "next/router";
 
 interface LinkItemProps {
   name: string;
@@ -156,8 +158,17 @@ interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+  const router = useRouter();
   const { Metamask, GreenDot } = useIcons();
   const { active, activateBrowserWallet, account } = useEthers();
+
+  useEffect(() => {
+    const cookieStore = cookies();
+    const session = cookieStore.get("smsuances_session");
+    if (!session) {
+      router.push("/dashboard");
+    }
+  }, [router]);
 
   return (
     <Flex

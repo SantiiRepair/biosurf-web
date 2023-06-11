@@ -17,8 +17,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import{ useRouter } from "next/router";
-// import { signIn } from "next-auth/react";
+import { useRouter } from "next/router";
+import { cookies } from "next/headers";
 
 function FacebookButton() {
   return (
@@ -55,27 +55,33 @@ function GoogleButton() {
 }
 
 export default function Login() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [ipv4, setIpv4] = useState("");
-  const router = useRouter();
-  const baseLink = "https://drn14r-7070.csb.app";
+  const baseLink = "https://drn14r-8080.csb.app"; // https://api.smsuances.club
 
   useEffect(() => {
     getIpv4();
-  }, []);
+    const cookieStore = cookies();
+    const session = cookieStore.get("smsuances_session");
+    if (session) {
+      router.push("/dashboard");
+    }
+  }, [router]);
 
   const login = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try {
-      const logg = await axios.post(`${baseLink}/login`, {
+      await axios.post(`${baseLink}/user/login`, {
         email: email,
         password: password,
         // ipv4: ipv4,
       });
-      console.log({ logg });
-      // router.push("/account");
-    } catch (error) {}
+      router.push("/dashboard");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const getIpv4 = async () => {

@@ -19,6 +19,8 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
+import { useRouter } from "next/router";
+import { cookies } from "next/headers";
 
 function FacebookButton() {
   return (
@@ -55,29 +57,35 @@ function GoogleButton() {
 }
 
 export default function SignUp() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [name, setName] = useState("");
   const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [ipv4, setIpv4] = useState("");
-  const baseLink = "https://drn14r-7070.csb.app";
+  const baseLink = "https://drn14r-8080.csb.app"; // https://api.smsuances.club
 
   useEffect(() => {
     getIpv4();
-  }, []);
+    const cookieStore = cookies();
+    const session = cookieStore.get("smsuances_session");
+    if (session) {
+      router.push("/dashboard");
+    }
+  }, [router]);
 
   const register = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${baseLink}/register`, {
+      await axios.post(`${baseLink}/user/register`, {
         name: name,
         lastname: lastname,
         email: email,
         password: password,
         // ipv4: ipv4,
       });
-      // router.push("/account");
+      router.push("/login");
     } catch (err) {
       console.error(err);
     }
