@@ -166,7 +166,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
     const cookieStore = cookies();
     const session = cookieStore.get("smsuances_session");
     if (!session) {
-      router.push("/dashboard");
+      router.push("/login");
     }
   }, [router]);
 
