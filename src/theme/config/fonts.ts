@@ -3,4 +3,4 @@ const fonts = {
   body: "Rogan, Arial, Helvetica, sans-serif",
 };
 
-export default fonts
+export default fonts;

@@ -16,18 +16,18 @@ declare global {
 }
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
-  return(
-   <>
+  return (
+    <>
       {/* <SessionProvider session={session}> */}
-        <DefaultSeo {...config} />
-        <ChakraProvider resetCSS theme={theme}>
-          <DAppProvider config={{}}>
-            <Flex direction={"column"}>
-              <Header />
-              <Component {...pageProps} />
-            </Flex>
-          </DAppProvider>
-        </ChakraProvider>
+      <DefaultSeo {...config} />
+      <ChakraProvider resetCSS theme={theme}>
+        <DAppProvider config={{}}>
+          <Flex direction={"column"}>
+            <Header />
+            <Component {...pageProps} />
+          </Flex>
+        </DAppProvider>
+      </ChakraProvider>
       {/* </SessionProvider> */}
     </>
   );

@@ -19,6 +19,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/router";
 import { cookies } from "next/headers";
+import { getServerSession } from 'next-auth/next';
 
 function FacebookButton() {
   return (
@@ -62,13 +63,8 @@ export default function Login() {
   const baseLink = "https://drn14r-8080.csb.app"; // https://api.smsuances.club
 
   useEffect(() => {
-    getIpv4();
-    const cookieStore = cookies();
-    const session = cookieStore.get("smsuances_session");
-    if (session) {
-      router.push("/dashboard");
-    }
-  }, [router]);
+    getParams();
+  });
 
   const login = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -84,9 +80,16 @@ export default function Login() {
     }
   };
 
-  const getIpv4 = async () => {
-    const res = await axios.get("https://ipv4.jsonip.com/");
-    setIpv4(res.data.ip);
+  const getParams = async () => {
+    try {
+      const res = await axios.get("https://ipv4.jsonip.com/");
+      setIpv4(res.data.ip);
+      const cookieStore = getServerSession();
+      const session = cookieStore.("smsuances_session");
+      if (session) {
+        router.push("/dashboard");
+      }
+    } catch (err) {}
   };
 
   return (
