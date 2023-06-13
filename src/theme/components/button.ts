@@ -1,8 +1,8 @@
 const Button = {
-  baseStyle: {
-    fontWeight: "bold",
-    fontSize: "24px",
-  },
+    baseStyle: {
+        fontWeight: 'bold',
+        fontSize: '24px',
+    },
 };
 
 export default Button;

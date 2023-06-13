@@ -1,41 +1,41 @@
 {
-  "name": "biosurf-web",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "prisma generate --schema=./src/prisma/schema.prisma && next dev",
-    "build": "prisma generate --schema=./src/prisma/schema.prisma && next build",
-    "start": "next start",
-    "lint": "next lint",
-    "format": "prettier --write .",
-    "format:check": "prettier --check ."
-  },
-  "dependencies": {
-    "@chakra-ui/icons": "^2.0.19",
-    "@chakra-ui/react": "^2.6.1",
-    "@emotion/react": "^11.11.0",
-    "@metamask/providers": "^11.0.0",
-    "@next-auth/prisma-adapter": "^1.0.7",
-    "@usedapp/core": "^1.2.10",
-    "autoprefixer": "10.4.14",
-    "axios": "^1.4.0",
-    "eslint": "8.40.0",
-    "eslint-config-next": "13.4.1",
-    "next": "13.4.1",
-    "next-auth": "^4.22.1",
-    "next-seo": "^6.0.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-icons": "^4.8.0",
-    "react-query": "^3.39.3"
-  },
-  "devDependencies": {
-    "@types/node": "20.1.2",
-    "@types/react": "18.2.6",
-    "@types/react-dom": "18.2.4",
-    "prettier": "^2.8.8",
-    "prisma": "^4.15.0",
-    "sass": "^1.63.2",
-    "typescript": "5.0.4"
-  }
+    "name": "biosurf-web",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "prisma generate --schema=./src/prisma/schema.prisma && next dev",
+        "build": "prisma generate --schema=./src/prisma/schema.prisma && next build",
+        "start": "next start",
+        "lint": "next lint",
+        "format": "prettier --write .",
+        "format:check": "prettier --check ."
+    },
+    "dependencies": {
+        "@chakra-ui/icons": "^2.0.19",
+        "@chakra-ui/react": "^2.6.1",
+        "@emotion/react": "^11.11.0",
+        "@metamask/providers": "^11.0.0",
+        "@next-auth/prisma-adapter": "^1.0.7",
+        "@usedapp/core": "^1.2.10",
+        "autoprefixer": "10.4.14",
+        "axios": "^1.4.0",
+        "eslint": "8.40.0",
+        "eslint-config-next": "13.4.1",
+        "next": "13.4.1",
+        "next-auth": "^4.22.1",
+        "next-seo": "^6.0.0",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "react-icons": "^4.8.0",
+        "react-query": "^3.39.3"
+    },
+    "devDependencies": {
+        "@types/node": "20.1.2",
+        "@types/react": "18.2.6",
+        "@types/react-dom": "18.2.4",
+        "prettier": "^2.8.8",
+        "prisma": "^4.15.0",
+        "sass": "^1.63.2",
+        "typescript": "5.0.4"
+    }
 }
