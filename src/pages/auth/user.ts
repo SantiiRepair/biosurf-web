@@ -4,7 +4,7 @@ import {
     getAllUsers,
     getUser,
     updateUser,
-} from '@/prisma/user';
+} from '../../prisma/user';
 
 const handler = async (req, res) => {
     try {
