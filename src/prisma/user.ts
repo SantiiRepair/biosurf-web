@@ -1,3 +1,4 @@
+import { PrismaUser } from '../types/prisma';
 import prisma from './prisma';
 
 export const getAllUsers = async () => {
@@ -18,7 +19,7 @@ export const getUser = async ({
     return user;
 };
 
-export const createUser = async ({ email, name, image }) => {
+export const createUser = async ({ email, name, image }: PrismaUser) => {
     const user = await prisma.user.create({
         data: {
             email,
@@ -29,7 +30,7 @@ export const createUser = async ({ email, name, image }) => {
     return user;
 };
 
-export const updateUser = async (id, updateData) => {
+export const updateUser = async (id: string, updateData: any) => {
     const user = await prisma.user.update({
         where: {
             id,
@@ -41,7 +42,7 @@ export const updateUser = async (id, updateData) => {
     return user;
 };
 
-export const deleteUser = async id => {
+export const deleteUser = async (id: string) => {
     const user = await prisma.user.delete({
         where: {
             id,
