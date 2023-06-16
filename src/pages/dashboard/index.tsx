@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode } from 'react';
 import {
     IconButton,
     Avatar,
@@ -36,8 +36,9 @@ import {
 import { IconType } from 'react-icons';
 import { useEthers } from '@usedapp/core';
 import useIcons from '@/src/modules/components/icons';
-import { cookies } from 'next/headers';
-import { useRouter } from 'next/router';
+import { AuthProps, privateRoute } from '@/src/auth/route';
+import { get } from '@/src/auth/rest';
+import { Props } from '@/src/types/pages';
 
 interface LinkItemProps {
     name: string;
@@ -51,11 +52,7 @@ const LinkItems: Array<LinkItemProps> = [
     { name: 'Settings', icon: FiSettings },
 ];
 
-export default function SidebarWithHeader({
-    children,
-}: {
-    children: ReactNode;
-}) {
+function Dashboard({ children }: { children: ReactNode }) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     return (
         <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
@@ -130,6 +127,7 @@ interface NavItemProps extends FlexProps {
     icon: IconType;
     children: string;
 }
+
 const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
     return (
         <Link
@@ -169,8 +167,8 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
 interface MobileProps extends FlexProps {
     onOpen: () => void;
 }
+
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
-    const router = useRouter();
     const { Metamask, GreenDot } = useIcons();
     const { active, activateBrowserWallet, account } = useEthers();
 
@@ -273,3 +271,23 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         </Flex>
     );
 };
+
+Dashboard.getInitialProps = async ({ auth }: AuthProps): Promise<Props> => {
+    const res: any = await get('/user/restricted', {
+        headers: {
+            Authorization: auth.authorizationString,
+        },
+    });
+
+    let message = 'Something unexpected happened!';
+
+    if (res.error) {
+        message = res.error;
+    } else if (res.data && res.data.message) {
+        message = res.data.message;
+    }
+
+    return { message, auth };
+};
+
+export default privateRoute(Dashboard);

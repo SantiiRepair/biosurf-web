@@ -13,32 +13,19 @@ import {
     Text,
     useColorModeValue,
 } from '@chakra-ui/react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import axios from 'axios';
-import { useRouter } from 'next/router';
 import GoogleButton from '@/src/modules/components/button/google';
 import FacebookButton from '@/src/modules/components/button/facebook';
 import { Register } from '@/src/auth/register';
-
-export type RegisterInputs = {
-    email: string;
-    password: string;
-};
+import { RegisterInputs } from '@/src/types/pages';
 
 function RegisterPage() {
-    const router = useRouter();
-    const [showPassword, setShowPassword] = useState(false);
-    const [name, setName] = useState('');
-    const [lastname, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const baseLink = process.env.BACKEND_URL; // https://api.smsuances.club
-
     const initialValues: RegisterInputs = { email: '', password: '' };
 
     const [inputs, setInputs] = useState(initialValues);
     const [error, setError] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();

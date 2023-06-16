@@ -1,7 +1,7 @@
 import Router from 'next/router';
-import { RegisterInputs } from '../pages/register';
 import { catchAxiosError } from './error';
 import { get, post } from './rest';
+import { RegisterInputs } from '../types/pages';
 
 export async function Register(inputs: RegisterInputs): Promise<string | void> {
     const data = new URLSearchParams(inputs);

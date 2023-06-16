@@ -16,11 +16,7 @@ import { useState } from 'react';
 import { Login } from '../../auth/login';
 import FacebookButton from '@/src/modules/components/button/facebook';
 import GoogleButton from '@/src/modules/components/button/google';
-
-export type LoginInputs = {
-    email: string;
-    password: string;
-};
+import { LoginInputs } from '@/src/types/pages';
 
 function LoginPage() {
     const initialValues: LoginInputs = { email: '', password: '' };
