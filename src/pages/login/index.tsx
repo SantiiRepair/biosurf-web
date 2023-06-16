@@ -17,7 +17,6 @@ import { Login } from '../../auth/login';
 import FacebookButton from '@/src/modules/components/button/facebook';
 import GoogleButton from '@/src/modules/components/button/google';
 import { LoginInputs } from '@/src/types/pages';
-import { GoogleAuth } from '@/src/auth/google';
 
 function LoginPage() {
     const initialValues: LoginInputs = { email: '', password: '' };
@@ -103,13 +102,10 @@ function LoginPage() {
                                 >
                                     Sign in
                                 </Button>
-                                <GoogleButton
-                                    onGoogle={GoogleAuth}
-                                    text="Sign in with Google"
-                                />
-                                <FacebookButton text="Continue with Facebook" />
                             </Stack>
                         </form>
+                        <GoogleButton text="Sign in with Google" />
+                        <FacebookButton text="Continue with Facebook" />
                     </Stack>
                 </Box>
             </Stack>

@@ -20,7 +20,6 @@ import FacebookButton from '@/src/modules/components/button/facebook';
 import { Register } from '@/src/auth/register';
 import { RegisterInputs } from '@/src/types/pages';
 import axios from 'axios';
-import { GoogleAuth } from '@/src/auth/google';
 
 function RegisterPage() {
     const [ipv4, setIpv4] = useState('');
@@ -154,10 +153,7 @@ function RegisterPage() {
                                 </Button>
                             </Stack>
                         </form>
-                        <GoogleButton
-                            onGoogle={GoogleAuth}
-                            text="Sign up with Google"
-                        />
+                        <GoogleButton text="Sign up with Google" />
                         <FacebookButton text="Continue with Facebook" />
                     </Stack>
                 </Box>
