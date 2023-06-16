@@ -1,12 +1,13 @@
-import { GoogleAuth } from '@/src/auth/google';
+import GoogleAuth from '@/src/auth/google';
 import { Button, Center, Text } from '@chakra-ui/react';
 import { FcGoogle } from 'react-icons/fc';
 
 interface GoogleProps {
+    onGoogle: () => void;
     text: string;
 }
 
-export default function GoogleButton({ text }: GoogleProps) {
+export default function GoogleButton({ onGoogle, text }: GoogleProps) {
     return (
         <Center p={0}>
             <Button
@@ -14,7 +15,7 @@ export default function GoogleButton({ text }: GoogleProps) {
                 maxW={'md'}
                 variant={'outline'}
                 leftIcon={<FcGoogle />}
-                onClick={GoogleAuth}
+                onClick={onGoogle}
             >
                 <Center>
                     <Text>{text}</Text>

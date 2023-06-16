@@ -1,6 +1,6 @@
 import { useGoogleOneTapLogin } from '@react-oauth/google';
 
-export const GoogleAuth = () => {
+export default function GoogleAuth() {
     useGoogleOneTapLogin({
         onSuccess: credentialResponse => {
             console.log(credentialResponse);
@@ -9,4 +9,4 @@ export const GoogleAuth = () => {
             console.log('Login Failed');
         },
     });
-};
+}
