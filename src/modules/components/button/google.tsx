@@ -1,8 +1,6 @@
+import { useState } from 'react';
 import { Button, Center, Text } from '@chakra-ui/react';
-import {
-    GoogleOAuthProvider,
-    useGoogleLogin as GoogleLogin,
-} from '@react-oauth/google';
+import { useGoogleLogin } from '@react-oauth/google';
 import { FcGoogle } from 'react-icons/fc';
 
 interface GoogleProps {
@@ -10,26 +8,28 @@ interface GoogleProps {
 }
 
 export default function GoogleButton({ text }: GoogleProps) {
+    const [accessToken, setAccessToken] = useState('');
+    const signIn = useGoogleLogin({
+        onSuccess: tokenResponse => {
+            setAccessToken(tokenResponse.access_token);
+        },
+    });
+
     return (
         <Center p={0}>
-            <GoogleOAuthProvider clientId={process.env.CLIENT_ID!}>
-                <Button
-                    w={'full'}
-                    maxW={'md'}
-                    variant={'outline'}
-                    leftIcon={<FcGoogle />}
-                    onClick={() => {
-                        GoogleLogin({
-                            onSuccess: tokenResponse =>
-                                console.log(tokenResponse),
-                        });
-                    }}
-                >
-                    <Center>
-                        <Text>{text}</Text>
-                    </Center>
-                </Button>
-            </GoogleOAuthProvider>
+            <Button
+                w={'full'}
+                maxW={'md'}
+                variant={'outline'}
+                leftIcon={<FcGoogle />}
+                onClick={() => {
+                    signIn();
+                }}
+            >
+                <Center>
+                    <Text>{text}</Text>
+                </Center>
+            </Button>
         </Center>
     );
 }

@@ -1,4 +1,5 @@
 import { AppProps } from 'next/app';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import { ChakraProvider, Flex } from '@chakra-ui/react';
 import { DAppProvider } from '@usedapp/core';
 import { DefaultSeo } from 'next-seo';
@@ -13,10 +14,12 @@ function MyApp({ Component, pageProps: { ...pageProps } }: AppProps) {
             <DefaultSeo {...config} />
             <ChakraProvider resetCSS theme={theme}>
                 <DAppProvider config={{}}>
-                    <Flex direction={'column'}>
-                        <Header />
-                        <Component {...pageProps} />
-                    </Flex>
+                    <GoogleOAuthProvider clientId={process.env.CLIENT_ID!}>
+                        <Flex direction={'column'}>
+                            <Header />
+                            <Component {...pageProps} />
+                        </Flex>
+                    </GoogleOAuthProvider>
                 </DAppProvider>
             </ChakraProvider>
         </>
