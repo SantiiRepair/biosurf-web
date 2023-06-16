@@ -61,7 +61,7 @@ function LoginPage() {
                 >
                     <Stack spacing={4}>
                         <form onSubmit={handleSubmit}>
-                            <FormControl id="email">
+                            <FormControl id="email" isRequired>
                                 <FormLabel>Email address</FormLabel>
                                 <Input
                                     type="email"
@@ -71,7 +71,7 @@ function LoginPage() {
                                     value={inputs.email}
                                 />
                             </FormControl>
-                            <FormControl id="password">
+                            <FormControl id="password" isRequired>
                                 <FormLabel>Password</FormLabel>
                                 <Input
                                     type="password"
