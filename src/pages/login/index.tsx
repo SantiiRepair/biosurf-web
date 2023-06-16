@@ -13,7 +13,7 @@ import {
     useColorModeValue,
 } from '@chakra-ui/react';
 import { useState } from 'react';
-import { login } from '../../auth/login_service';
+import { login } from '../../auth/login';
 import FacebookButton from '@/src/modules/components/button/facebook';
 import GoogleButton from '@/src/modules/components/button/google';
 

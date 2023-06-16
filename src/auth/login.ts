@@ -2,7 +2,7 @@ import Cookie from 'js-cookie';
 import Router from 'next/router';
 import { LoginInputs } from '../pages/login';
 import { catchAxiosError } from './error';
-import { post } from './rest_service';
+import { post } from './rest';
 
 export const COOKIES = {
     authToken: 'myApp.authToken',

@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     env: {
-        BACKEND_URL: '',
+        BACKEND_URL: 'https://drn14r-8080.csb.app',
     },
 };
 

@@ -2,11 +2,15 @@ import axios, { AxiosRequestConfig } from 'axios';
 import { catchAxiosError } from './error';
 
 const baseConfig: AxiosRequestConfig = {
-    baseURL: 'http://localhost:1323',
+    baseURL: process.env.BACKEND_URL,
 };
 
-export const post = (url: string, data: URLSearchParams) => {
-    return axios.post(url, data, baseConfig).catch(catchAxiosError);
+export const post = async (url: string, data: URLSearchParams) => {
+    try {
+        return await axios.post(url, data, baseConfig);
+    } catch (err) {
+        return catchAxiosError(err as any);
+    }
 };
 
 export const get = async (url: string, config: AxiosRequestConfig = {}) => {

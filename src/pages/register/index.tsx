@@ -10,51 +10,16 @@ import {
     Stack,
     Button,
     Heading,
-    Center,
     Text,
     useColorModeValue,
 } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import { FaFacebook } from 'react-icons/fa';
-import { FcGoogle } from 'react-icons/fc';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { cookies } from 'next/headers';
-
-function FacebookButton() {
-    return (
-        <Center p={0}>
-            <Button
-                w={'full'}
-                maxW={'md'}
-                colorScheme={'facebook'}
-                leftIcon={<FaFacebook />}
-            >
-                <Center>
-                    <Text>Continue with Facebook</Text>
-                </Center>
-            </Button>
-        </Center>
-    );
-}
-
-function GoogleButton() {
-    return (
-        <Center p={0}>
-            <Button
-                w={'full'}
-                maxW={'md'}
-                variant={'outline'}
-                leftIcon={<FcGoogle />}
-            >
-                <Center>
-                    <Text>Sign in with Google</Text>
-                </Center>
-            </Button>
-        </Center>
-    );
-}
+import GoogleButton from '@/src/modules/components/button/google';
+import FacebookButton from '@/src/modules/components/button/facebook';
 
 export default function SignUp() {
     const router = useRouter();
