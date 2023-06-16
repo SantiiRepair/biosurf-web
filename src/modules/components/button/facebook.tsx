@@ -1,7 +1,11 @@
 import { Button, Center, Text } from '@chakra-ui/react';
 import { FaFacebook } from 'react-icons/fa';
 
-export default function FacebookButton() {
+interface FacebookProps {
+    text: string;
+}
+
+export default function FacebookButton({ text }: FacebookProps) {
     return (
         <Center p={0}>
             <Button
@@ -11,7 +15,7 @@ export default function FacebookButton() {
                 leftIcon={<FaFacebook />}
             >
                 <Center>
-                    <Text>Continue with Facebook</Text>
+                    <Text>{text}</Text>
                 </Center>
             </Button>
         </Center>

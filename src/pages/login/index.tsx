@@ -103,8 +103,8 @@ function LoginPage() {
                                     Sign in
                                 </Button>
 
-                                <FacebookButton />
-                                <GoogleButton />
+                                <FacebookButton text="Continue with Facebook"/>
+                                <GoogleButton text="Sign in with Google" />
                             </Stack>
                         </form>
                     </Stack>
