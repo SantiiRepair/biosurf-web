@@ -153,7 +153,10 @@ function RegisterPage() {
                                 </Button>
                             </Stack>
                         </form>
-                        <GoogleButton text="Sign up with Google" />
+                        <GoogleButton
+                            text="Sign up with Google"
+                            query="register"
+                        />
                         <FacebookButton text="Continue with Facebook" />
                     </Stack>
                 </Box>
