@@ -18,7 +18,7 @@ export default function GoogleButton({ text, query }: GoogleProps) {
                 await axios.post(
                     `${process.env.BACKEND_URL}/user/google?${query}`,
                     {
-                        google_token: accessToken,
+                        googleToken: accessToken,
                     },
                 );
             },
