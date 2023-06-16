@@ -19,44 +19,39 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import GoogleButton from '@/src/modules/components/button/google';
 import FacebookButton from '@/src/modules/components/button/facebook';
+import { Register } from '@/src/auth/register';
 
-export default function SignUp() {
+export type RegisterInputs = {
+    email: string;
+    password: string;
+};
+
+function RegisterPage() {
     const router = useRouter();
     const [showPassword, setShowPassword] = useState(false);
     const [name, setName] = useState('');
     const [lastname, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [ipv4, setIpv4] = useState('');
     const baseLink = process.env.BACKEND_URL; // https://api.smsuances.club
 
-    useEffect(() => {
-        getIpv4();
-    });
+    const initialValues: RegisterInputs = { email: '', password: '' };
 
-    const register = async (e: { preventDefault: () => void }) => {
+    const [inputs, setInputs] = useState(initialValues);
+    const [error, setError] = useState('');
+
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
-        try {
-            await axios.post(`${baseLink}/user/register`, {
-                name: name,
-                lastname: lastname,
-                email: email,
-                password: password,
-                // ipv4: ipv4,
-            });
-            router.push('/login');
-        } catch (err) {
-            console.error(err);
-        }
+        const res = await Register(inputs);
+        if (res) setError(res);
     };
 
-    const getIpv4 = async () => {
-        try {
-            const res = await axios.get('https://ipv4.jsonip.com/');
-            setIpv4(res.data.ip);
-        } catch (err) {
-            console.error(err);
-        }
+    const handleInputChange = (e: React.ChangeEvent<any>) => {
+        e.persist();
+        setInputs({
+            ...inputs,
+            [e.target.name]: e.target.value,
+        });
     };
 
     return (
@@ -82,16 +77,14 @@ export default function SignUp() {
                     p={8}
                 >
                     <Stack spacing={4}>
-                        <form onSubmit={register}>
+                        <form onSubmit={handleSubmit}>
                             <HStack>
                                 <Box>
                                     <FormControl id="firstName" isRequired>
                                         <FormLabel>First Name</FormLabel>
                                         <Input
                                             type="text"
-                                            onChange={e => {
-                                                setName(e.target.value);
-                                            }}
+                                            onChange={handleInputChange}
                                         />
                                     </FormControl>
                                 </Box>
@@ -100,9 +93,7 @@ export default function SignUp() {
                                         <FormLabel>Last Name</FormLabel>
                                         <Input
                                             type="text"
-                                            onChange={e => {
-                                                setLastName(e.target.value);
-                                            }}
+                                            onChange={handleInputChange}
                                         />
                                     </FormControl>
                                 </Box>
@@ -111,9 +102,7 @@ export default function SignUp() {
                                 <FormLabel>Email address</FormLabel>
                                 <Input
                                     type="email"
-                                    onChange={e => {
-                                        setEmail(e.target.value);
-                                    }}
+                                    onChange={handleInputChange}
                                 />
                             </FormControl>
                             <FormControl id="password" isRequired>
@@ -123,9 +112,7 @@ export default function SignUp() {
                                         type={
                                             showPassword ? 'text' : 'password'
                                         }
-                                        onChange={e => {
-                                            setPassword(e.target.value);
-                                        }}
+                                        onChange={handleInputChange}
                                     />
                                     <InputRightElement h={'full'}>
                                         <Button
@@ -169,3 +156,5 @@ export default function SignUp() {
         </Flex>
     );
 }
+
+export default RegisterPage;

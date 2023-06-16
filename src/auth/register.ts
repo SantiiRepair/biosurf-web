@@ -1,12 +1,12 @@
-import Cookie from 'js-cookie';
 import Router from 'next/router';
-import { LoginInputs } from '../pages/login';
+import { RegisterInputs } from '../pages/register';
 import { catchAxiosError } from './error';
-import { post } from './rest';
+import { get, post } from './rest';
 
-export async function Register(inputs: LoginInputs): Promise<string | void> {
+export async function Register(inputs: RegisterInputs): Promise<string | void> {
     const data = new URLSearchParams(inputs);
-    const res: any = await post('/user/login', data).catch(catchAxiosError);
+    const ip = await get('https://ipv4.jsonip.com/');
+    const res: any = await post('/user/register', data).catch(catchAxiosError);
     if (res.error) {
         return res.error;
     } else if (!res.data || !res.data.token) {
