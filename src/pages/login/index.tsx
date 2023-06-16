@@ -13,7 +13,7 @@ import {
     useColorModeValue,
 } from '@chakra-ui/react';
 import { useState } from 'react';
-import { login } from '../../auth/login';
+import { Login } from '../../auth/login';
 import FacebookButton from '@/src/modules/components/button/facebook';
 import GoogleButton from '@/src/modules/components/button/google';
 
@@ -22,7 +22,7 @@ export type LoginInputs = {
     password: string;
 };
 
-function Login() {
+function LoginPage() {
     const initialValues: LoginInputs = { email: '', password: '' };
 
     const [inputs, setInputs] = useState(initialValues);
@@ -30,7 +30,7 @@ function Login() {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        const res = await login(inputs);
+        const res = await Login(inputs);
         if (res) setError(res);
     };
 
@@ -118,4 +118,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default LoginPage;

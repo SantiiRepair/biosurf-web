@@ -17,7 +17,6 @@ import { useState, useEffect } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { cookies } from 'next/headers';
 import GoogleButton from '@/src/modules/components/button/google';
 import FacebookButton from '@/src/modules/components/button/facebook';
 
@@ -29,16 +28,11 @@ export default function SignUp() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [ipv4, setIpv4] = useState('');
-    const baseLink = 'https://drn14r-8080.csb.app'; // https://api.smsuances.club
+    const baseLink = process.env.BACKEND_URL; // https://api.smsuances.club
 
     useEffect(() => {
         getIpv4();
-        const cookieStore = cookies();
-        const session = cookieStore.get('smsuances_session');
-        if (session) {
-            router.push('/dashboard');
-        }
-    }, [router]);
+    });
 
     const register = async (e: { preventDefault: () => void }) => {
         e.preventDefault();

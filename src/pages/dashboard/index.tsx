@@ -174,14 +174,6 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
     const { Metamask, GreenDot } = useIcons();
     const { active, activateBrowserWallet, account } = useEthers();
 
-    useEffect(() => {
-        const cookieStore = cookies();
-        const session = cookieStore.get('smsuances_session');
-        if (!session) {
-            router.push('/login');
-        }
-    }, [router]);
-
     return (
         <Flex
             ml={{ base: 0, md: 60 }}

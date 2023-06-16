@@ -4,11 +4,7 @@ import { LoginInputs } from '../pages/login';
 import { catchAxiosError } from './error';
 import { post } from './rest';
 
-export const COOKIES = {
-    authToken: 'smsuances.session',
-};
-
-export async function Login(inputs: LoginInputs): Promise<string | void> {
+export async function Register(inputs: LoginInputs): Promise<string | void> {
     const data = new URLSearchParams(inputs);
     const res: any = await post('/user/login', data).catch(catchAxiosError);
     if (res.error) {
@@ -16,8 +12,6 @@ export async function Login(inputs: LoginInputs): Promise<string | void> {
     } else if (!res.data || !res.data.token) {
         return 'Something went wrong!';
     }
-    const { token } = res.data;
 
-    Cookie.set(COOKIES.authToken, token);
-    await Router.push('/dashboard');
+    await Router.push('/login');
 }
