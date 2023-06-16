@@ -33,7 +33,7 @@
             "runAtStart": false
         },
         "npm run format": {
-            "name": "npm run format",
+            "name": "format",
             "command": "npm run format"
         }
     }
