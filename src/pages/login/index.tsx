@@ -10,64 +10,35 @@ import {
     Button,
     Heading,
     Text,
-    Center,
     useColorModeValue,
 } from '@chakra-ui/react';
 import { useState } from 'react';
-import axios from 'axios';
-import { FaFacebook } from 'react-icons/fa';
-import { FcGoogle } from 'react-icons/fc';
-import { signIn } from 'next-auth/react';
-import useSocialAuth from '@/src/hooks/useSocialAuth';
+import { login } from '../../auth/login_service';
+import FacebookButton from '@/src/modules/components/button/facebook';
+import GoogleButton from '@/src/modules/components/button/google';
 
-function FacebookButton() {
-    return (
-        <Center p={0}>
-            <Button
-                w={'full'}
-                maxW={'md'}
-                colorScheme={'facebook'}
-                leftIcon={<FaFacebook />}
-            >
-                <Center>
-                    <Text>Continue with Facebook</Text>
-                </Center>
-            </Button>
-        </Center>
-    );
-}
+export type LoginInputs = {
+    email: string;
+    password: string;
+};
 
-function GoogleButton() {
-    const { Google } = useSocialAuth();
+function Login() {
+    const initialValues: LoginInputs = { email: '', password: '' };
 
-    return (
-        <Center p={0}>
-            <Button
-                w={'full'}
-                maxW={'md'}
-                variant={'outline'}
-                leftIcon={<FcGoogle />}
-                onClick={Google}
-            >
-                <Center>
-                    <Text>Sign in with Google</Text>
-                </Center>
-            </Button>
-        </Center>
-    );
-}
+    const [inputs, setInputs] = useState(initialValues);
+    const [error, setError] = useState('');
 
-export default function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleLogin = async (e: { preventDefault: () => void }) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
-        const res = await axios.get('https://ipv4.jsonip.com/');
-        signIn('credentials', {
-            email,
-            password,
-            callbackUrl: `${window.location.origin}/welcome`,
+        const res = await login(inputs);
+        if (res) setError(res);
+    };
+
+    const handleInputChange = (e: React.ChangeEvent<any>) => {
+        e.persist();
+        setInputs({
+            ...inputs,
+            [e.target.name]: e.target.value,
         });
     };
 
@@ -93,23 +64,25 @@ export default function Login() {
                     p={8}
                 >
                     <Stack spacing={4}>
-                        <form onSubmit={handleLogin}>
+                        <form onSubmit={handleSubmit}>
                             <FormControl id="email">
                                 <FormLabel>Email address</FormLabel>
                                 <Input
-                                    onChange={e => {
-                                        setEmail(e.target.value);
-                                    }}
                                     type="email"
+                                    id="email"
+                                    name="email"
+                                    onChange={handleInputChange}
+                                    value={inputs.email}
                                 />
                             </FormControl>
                             <FormControl id="password">
                                 <FormLabel>Password</FormLabel>
                                 <Input
-                                    onChange={e => {
-                                        setPassword(e.target.value);
-                                    }}
                                     type="password"
+                                    id="password"
+                                    name="password"
+                                    onChange={handleInputChange}
+                                    value={inputs.password}
                                 />
                             </FormControl>
                             <Stack spacing={10}>
@@ -144,3 +117,5 @@ export default function Login() {
         </Flex>
     );
 }
+
+export default Login;

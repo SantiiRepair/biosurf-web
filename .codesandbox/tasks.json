@@ -31,6 +31,10 @@
             "name": "lint",
             "command": "yarn lint",
             "runAtStart": false
+        },
+        "npm run format": {
+            "name": "npm run format",
+            "command": "npm run format"
         }
     }
 }
