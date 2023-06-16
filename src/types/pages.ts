@@ -6,8 +6,11 @@ export type LoginInputs = {
 };
 
 export type RegisterInputs = {
+    name: string;
+    lastname: string;
     email: string;
     password: string;
+    ipv4: string;
 };
 
 export type Props = AuthProps & {

@@ -19,9 +19,17 @@ import GoogleButton from '@/src/modules/components/button/google';
 import FacebookButton from '@/src/modules/components/button/facebook';
 import { Register } from '@/src/auth/register';
 import { RegisterInputs } from '@/src/types/pages';
+import axios from 'axios';
 
 function RegisterPage() {
-    const initialValues: RegisterInputs = { email: '', password: '' };
+    const [ipv4, setIpv4] = useState('');
+    const initialValues: RegisterInputs = {
+        name: '',
+        lastname: '',
+        email: '',
+        password: '',
+        ipv4: ipv4,
+    };
 
     const [inputs, setInputs] = useState(initialValues);
     const [error, setError] = useState('');
@@ -29,6 +37,8 @@ function RegisterPage() {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+        const ip = await axios.get('https://ipv4.jsonip.com/');
+        setIpv4(ip.data.ip);
         const res = await Register(inputs);
         if (res) setError(res);
     };
@@ -71,15 +81,19 @@ function RegisterPage() {
                                         <FormLabel>First Name</FormLabel>
                                         <Input
                                             type="text"
+                                            id="name"
+                                            name="name"
                                             onChange={handleInputChange}
                                         />
                                     </FormControl>
                                 </Box>
                                 <Box>
-                                    <FormControl id="lastName" isRequired>
+                                    <FormControl id="lastname" isRequired>
                                         <FormLabel>Last Name</FormLabel>
                                         <Input
                                             type="text"
+                                            id="lastname"
+                                            name="lastname"
                                             onChange={handleInputChange}
                                         />
                                     </FormControl>
@@ -89,6 +103,8 @@ function RegisterPage() {
                                 <FormLabel>Email address</FormLabel>
                                 <Input
                                     type="email"
+                                    id="email"
+                                    name="email"
                                     onChange={handleInputChange}
                                 />
                             </FormControl>
@@ -99,6 +115,8 @@ function RegisterPage() {
                                         type={
                                             showPassword ? 'text' : 'password'
                                         }
+                                        id="password"
+                                        name="password"
                                         onChange={handleInputChange}
                                     />
                                     <InputRightElement h={'full'}>
