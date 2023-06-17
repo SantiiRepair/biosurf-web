@@ -3,6 +3,7 @@ import { Button, Center, Text } from '@chakra-ui/react';
 import { useGoogleLogin } from '@react-oauth/google';
 import { FcGoogle } from 'react-icons/fc';
 import axios from 'axios';
+import { SignIn } from '@/src/auth/google';
 
 interface GoogleProps {
     text: string;
@@ -10,21 +11,6 @@ interface GoogleProps {
 }
 
 export default function GoogleButton({ text, query }: GoogleProps) {
-    const [accessToken, setAccessToken] = useState('');
-    function SignIn() {
-        useGoogleLogin({
-            onSuccess: async tokenResponse => {
-                setAccessToken(tokenResponse.access_token);
-                await axios.post(
-                    `${process.env.BACKEND_URL}/user/google?${query}`,
-                    {
-                        googleToken: accessToken,
-                    },
-                );
-            },
-        });
-    }
-
     return (
         <Center p={0}>
             <Button
@@ -33,7 +19,7 @@ export default function GoogleButton({ text, query }: GoogleProps) {
                 variant={'outline'}
                 leftIcon={<FcGoogle />}
                 onClick={() => {
-                    SignIn();
+                    SignIn(query);
                 }}
             >
                 <Center>
