@@ -39,8 +39,8 @@ export default function GoogleButton({ text, action }: GoogleProps) {
             });
             console.log({ userInfo });
             const token = jwt.sign(
-                { userInfo },
-                process.env.JWT_ACCESS_TOKEN!,
+                JSON.parse(userInfo),
+                process.env.ACCESS_TOKEN_SECRET!,
                 {
                     expiresIn: '24h',
                 },
