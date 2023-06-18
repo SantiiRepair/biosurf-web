@@ -19,6 +19,7 @@ export const COOKIES = {
 export default function GoogleButton({ text, action }: GoogleProps) {
     const auth = useGoogleLogin({
         onSuccess: async googleToken => {
+            let ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET!;
             const userInfo: any = await new Promise(resolve => {
                 const xhr = new XMLHttpRequest();
 
@@ -37,14 +38,11 @@ export default function GoogleButton({ text, action }: GoogleProps) {
                 };
                 xhr.send();
             });
-            console.log({ userInfo });
-            const token = jwt.sign(
-                JSON.parse(userInfo),
-                process.env.ACCESS_TOKEN_SECRET!,
-                {
-                    expiresIn: '24h',
-                },
-            );
+
+            const token = jwt.sign(userInfo, ACCESS_TOKEN_SECRET, {
+                expiresIn: '24h',
+            });
+
             const res: any = await axios
                 .post(`${process.env.BACKEND_URL}/user/google`, {
                     googleToken: token,
