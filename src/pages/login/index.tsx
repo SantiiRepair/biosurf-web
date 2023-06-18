@@ -47,7 +47,7 @@ function LoginPage() {
         >
             <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
                 <Stack align={'center'}>
-                    <Heading fontSize={'4xl'}>Sign in to your account</Heading>
+                    <Heading fontSize={'4xl'}>Sign in</Heading>
                     <Text fontSize={'lg'} color={'gray.600'}>
                         to enjoy all of our cool{' '}
                         <Link color={'blue.400'}>features</Link> ✌️
@@ -106,7 +106,7 @@ function LoginPage() {
                         </form>
                         <GoogleButton
                             text="Sign in with Google"
-                            query="login"
+                            action="login"
                         />
                         <FacebookButton text="Continue with Facebook" />
                     </Stack>

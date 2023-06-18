@@ -1,5 +1,4 @@
 import { AppProps } from 'next/app';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 import { ChakraProvider, Flex } from '@chakra-ui/react';
 import { DAppProvider } from '@usedapp/core';
 import { DefaultSeo } from 'next-seo';
@@ -7,6 +6,7 @@ import theme from '../theme';
 import Header from '../modules/components/header';
 import config from '../../next-seo.config';
 import '../styles/icons.scss';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function MyApp({ Component, pageProps: { ...pageProps } }: AppProps) {
     return (
@@ -20,6 +20,7 @@ function MyApp({ Component, pageProps: { ...pageProps } }: AppProps) {
                             <Component {...pageProps} />
                         </Flex>
                     </GoogleOAuthProvider>
+                    ;
                 </DAppProvider>
             </ChakraProvider>
         </>
