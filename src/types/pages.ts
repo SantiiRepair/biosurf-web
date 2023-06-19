@@ -1,4 +1,4 @@
-import { AuthProps } from '../auth/route';
+import { AuthProps } from "../auth/route";
 
 export type LoginInputs = {
     email: string;

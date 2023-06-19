@@ -1,12 +1,12 @@
-import { AppProps } from 'next/app';
-import { ChakraProvider, Flex } from '@chakra-ui/react';
-import { DAppProvider } from '@usedapp/core';
-import { DefaultSeo } from 'next-seo';
-import theme from '../theme';
-import Header from '../modules/components/header';
-import config from '../../next-seo.config';
-import '../styles/icons.scss';
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { AppProps } from "next/app";
+import { ChakraProvider, Flex } from "@chakra-ui/react";
+import { DAppProvider } from "@usedapp/core";
+import { DefaultSeo } from "next-seo";
+import theme from "../theme";
+import Header from "../modules/components/header";
+import config from "../../next-seo.config";
+import "../styles/icons.scss";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function MyApp({ Component, pageProps: { ...pageProps } }: AppProps) {
     return (
@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps: { ...pageProps } }: AppProps) {
             <ChakraProvider resetCSS theme={theme}>
                 <DAppProvider config={{}}>
                     <GoogleOAuthProvider clientId={process.env.CLIENT_ID!}>
-                        <Flex direction={'column'}>
+                        <Flex direction={"column"}>
                             <Header />
                             <Component {...pageProps} />
                         </Flex>

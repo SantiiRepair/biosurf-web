@@ -12,32 +12,32 @@ import {
     Heading,
     Text,
     useColorModeValue,
-} from '@chakra-ui/react';
-import { useState } from 'react';
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import GoogleButton from '@/src/modules/components/button/google';
-import FacebookButton from '@/src/modules/components/button/facebook';
-import { Register } from '@/src/auth/register';
-import { RegisterInputs } from '@/src/types/pages';
-import axios from 'axios';
+} from "@chakra-ui/react";
+import { useState } from "react";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import GoogleButton from "@/src/modules/components/button/google";
+import FacebookButton from "@/src/modules/components/button/facebook";
+import { Register } from "@/src/auth/register";
+import { RegisterInputs } from "@/src/types/pages";
+import axios from "axios";
 
 function RegisterPage() {
-    const [ipv4, setIpv4] = useState('');
+    const [ipv4, setIpv4] = useState("");
     const initialValues: RegisterInputs = {
-        name: '',
-        lastname: '',
-        email: '',
-        password: '',
+        name: "",
+        lastname: "",
+        email: "",
+        password: "",
         ipv4: ipv4,
     };
 
     const [inputs, setInputs] = useState(initialValues);
-    const [error, setError] = useState('');
+    const [error, setError] = useState("");
     const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        const ip = await axios.get('https://ipv4.jsonip.com/');
+        const ip = await axios.get("https://ipv4.jsonip.com/");
         setIpv4(ip.data.ip);
         const res = await Register(inputs);
         if (res) setError(res);
@@ -53,24 +53,24 @@ function RegisterPage() {
 
     return (
         <Flex
-            minH={'100vh'}
-            align={'center'}
-            justify={'center'}
-            bg={useColorModeValue('gray.50', 'gray.800')}
+            minH={"100vh"}
+            align={"center"}
+            justify={"center"}
+            bg={useColorModeValue("gray.50", "gray.800")}
         >
-            <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-                <Stack align={'center'}>
-                    <Heading fontSize={'4xl'} textAlign={'center'}>
+            <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+                <Stack align={"center"}>
+                    <Heading fontSize={"4xl"} textAlign={"center"}>
                         Sign up
                     </Heading>
-                    <Text fontSize={'lg'} color={'gray.600'}>
+                    <Text fontSize={"lg"} color={"gray.600"}>
                         to enjoy all of our cool features ✌️
                     </Text>
                 </Stack>
                 <Box
-                    rounded={'lg'}
-                    bg={useColorModeValue('white', 'gray.700')}
-                    boxShadow={'lg'}
+                    rounded={"lg"}
+                    bg={useColorModeValue("white", "gray.700")}
+                    boxShadow={"lg"}
                     p={8}
                 >
                     <Stack spacing={4}>
@@ -113,15 +113,15 @@ function RegisterPage() {
                                 <InputGroup>
                                     <Input
                                         type={
-                                            showPassword ? 'text' : 'password'
+                                            showPassword ? "text" : "password"
                                         }
                                         id="password"
                                         name="password"
                                         onChange={handleInputChange}
                                     />
-                                    <InputRightElement h={'full'}>
+                                    <InputRightElement h={"full"}>
                                         <Button
-                                            variant={'ghost'}
+                                            variant={"ghost"}
                                             onClick={() =>
                                                 setShowPassword(
                                                     showPassword =>
@@ -142,10 +142,10 @@ function RegisterPage() {
                                 <Button
                                     loadingText="Submitting"
                                     size="lg"
-                                    bg={'blue.400'}
-                                    color={'white'}
+                                    bg={"blue.400"}
+                                    color={"white"}
                                     _hover={{
-                                        bg: 'blue.500',
+                                        bg: "blue.500",
                                     }}
                                     type="submit"
                                 >

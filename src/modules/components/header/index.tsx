@@ -14,15 +14,15 @@ import {
     useColorModeValue,
     Image,
     useDisclosure,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 import {
     HamburgerIcon,
     CloseIcon,
     ChevronDownIcon,
     ChevronRightIcon,
-} from '@chakra-ui/icons';
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+} from "@chakra-ui/icons";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Header() {
     const router = useRouter();
@@ -30,7 +30,7 @@ export default function Header() {
     const [hidden, setHidden] = useState(false);
 
     useEffect(() => {
-        if (router.asPath == '/dashboard') {
+        if (router.asPath == "/dashboard") {
             setHidden(true);
         }
     }, [router.asPath]);
@@ -38,20 +38,20 @@ export default function Header() {
     return (
         <Box hidden={hidden}>
             <Flex
-                bg={useColorModeValue('white', 'gray.800')}
-                color={useColorModeValue('gray.600', 'white')}
-                minH={'60px'}
+                bg={useColorModeValue("white", "gray.800")}
+                color={useColorModeValue("gray.600", "white")}
+                minH={"60px"}
                 py={{ base: 2 }}
                 px={{ base: 4 }}
                 borderBottom={1}
-                borderStyle={'solid'}
-                borderColor={useColorModeValue('gray.200', 'gray.900')}
-                align={'center'}
+                borderStyle={"solid"}
+                borderColor={useColorModeValue("gray.200", "gray.900")}
+                align={"center"}
             >
                 <Flex
-                    flex={{ base: 1, md: 'auto' }}
+                    flex={{ base: 1, md: "auto" }}
                     ml={{ base: -2 }}
-                    display={{ base: 'flex', md: 'none' }}
+                    display={{ base: "flex", md: "none" }}
                 >
                     <IconButton
                         onClick={onToggle}
@@ -62,13 +62,13 @@ export default function Header() {
                                 <HamburgerIcon w={5} h={5} />
                             )
                         }
-                        variant={'ghost'}
-                        aria-label={'Toggle Navigation'}
+                        variant={"ghost"}
+                        aria-label={"Toggle Navigation"}
                     />
                 </Flex>
                 <Flex
                     flex={{ base: 1 }}
-                    justify={{ base: 'center', md: 'start' }}
+                    justify={{ base: "center", md: "start" }}
                 >
                     <Image
                         alt="Logo"
@@ -76,36 +76,36 @@ export default function Header() {
                         width={70}
                     />
 
-                    <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+                    <Flex display={{ base: "none", md: "flex" }} ml={10}>
                         <DesktopNav />
                     </Flex>
                 </Flex>
 
                 <Stack
                     flex={{ base: 1, md: 0 }}
-                    justify={'flex-end'}
-                    direction={'row'}
+                    justify={"flex-end"}
+                    direction={"row"}
                     spacing={6}
                 >
                     <Button
-                        as={'a'}
-                        fontSize={'sm'}
+                        as={"a"}
+                        fontSize={"sm"}
                         fontWeight={400}
-                        variant={'link'}
-                        href={'/login'}
+                        variant={"link"}
+                        href={"/login"}
                     >
                         Sign In
                     </Button>
                     <Button
-                        as={'a'}
-                        display={{ base: 'none', md: 'inline-flex' }}
-                        fontSize={'sm'}
+                        as={"a"}
+                        display={{ base: "none", md: "inline-flex" }}
+                        fontSize={"sm"}
                         fontWeight={600}
-                        color={'white'}
-                        bg={'blue.400'}
-                        href={'/register'}
+                        color={"white"}
+                        bg={"blue.400"}
+                        href={"/register"}
                         _hover={{
-                            bg: 'blue.300',
+                            bg: "blue.300",
                         }}
                     >
                         Sign Up
@@ -121,24 +121,24 @@ export default function Header() {
 }
 
 const DesktopNav = () => {
-    const linkColor = useColorModeValue('gray.600', 'gray.200');
-    const linkHoverColor = useColorModeValue('gray.800', 'white');
-    const popoverContentBgColor = useColorModeValue('white', 'gray.800');
+    const linkColor = useColorModeValue("gray.600", "gray.200");
+    const linkHoverColor = useColorModeValue("gray.800", "white");
+    const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
     return (
-        <Stack direction={'row'} spacing={4}>
+        <Stack direction={"row"} spacing={4}>
             {NAV_ITEMS.map(navItem => (
                 <Box key={navItem.label}>
-                    <Popover trigger={'hover'} placement={'bottom-start'}>
+                    <Popover trigger={"hover"} placement={"bottom-start"}>
                         <PopoverTrigger>
                             <Link
                                 p={2}
-                                href={navItem.href ?? '#'}
-                                fontSize={'sm'}
+                                href={navItem.href ?? "#"}
+                                fontSize={"sm"}
                                 fontWeight={500}
                                 color={linkColor}
                                 _hover={{
-                                    textDecoration: 'none',
+                                    textDecoration: "none",
                                     color: linkHoverColor,
                                 }}
                             >
@@ -149,11 +149,11 @@ const DesktopNav = () => {
                         {navItem.children && (
                             <PopoverContent
                                 border={0}
-                                boxShadow={'xl'}
+                                boxShadow={"xl"}
                                 bg={popoverContentBgColor}
                                 p={4}
-                                rounded={'xl'}
-                                minW={'sm'}
+                                rounded={"xl"}
+                                minW={"sm"}
                             >
                                 <Stack>
                                     {navItem.children.map(child => (
@@ -176,37 +176,37 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
     return (
         <Link
             href={href}
-            role={'group'}
-            display={'block'}
+            role={"group"}
+            display={"block"}
             p={2}
-            rounded={'md'}
-            _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}
+            rounded={"md"}
+            _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
         >
-            <Stack direction={'row'} align={'center'}>
+            <Stack direction={"row"} align={"center"}>
                 <Box>
                     <Text
-                        transition={'all .3s ease'}
-                        _groupHover={{ color: 'pink.400' }}
+                        transition={"all .3s ease"}
+                        _groupHover={{ color: "pink.400" }}
                         fontWeight={500}
                     >
                         {label}
                     </Text>
-                    <Text fontSize={'sm'}>{subLabel}</Text>
+                    <Text fontSize={"sm"}>{subLabel}</Text>
                 </Box>
                 <Flex
-                    transition={'all .3s ease'}
-                    transform={'translateX(-10px)'}
+                    transition={"all .3s ease"}
+                    transform={"translateX(-10px)"}
                     opacity={0}
                     _groupHover={{
-                        opacity: '100%',
-                        transform: 'translateX(0)',
+                        opacity: "100%",
+                        transform: "translateX(0)",
                     }}
-                    justify={'flex-end'}
-                    align={'center'}
+                    justify={"flex-end"}
+                    align={"center"}
                     flex={1}
                 >
                     <Icon
-                        color={'blue.400'}
+                        color={"blue.400"}
                         w={5}
                         h={5}
                         as={ChevronRightIcon}
@@ -220,9 +220,9 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
 const MobileNav = () => {
     return (
         <Stack
-            bg={useColorModeValue('white', 'gray.800')}
+            bg={useColorModeValue("white", "gray.800")}
             p={4}
-            display={{ md: 'none' }}
+            display={{ md: "none" }}
         >
             {NAV_ITEMS.map(navItem => (
                 <MobileNavItem key={navItem.label} {...navItem} />
@@ -239,24 +239,24 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
             <Flex
                 py={2}
                 as={Link}
-                href={href ?? '#'}
-                justify={'space-between'}
-                align={'center'}
+                href={href ?? "#"}
+                justify={"space-between"}
+                align={"center"}
                 _hover={{
-                    textDecoration: 'none',
+                    textDecoration: "none",
                 }}
             >
                 <Text
                     fontWeight={600}
-                    color={useColorModeValue('gray.600', 'gray.200')}
+                    color={useColorModeValue("gray.600", "gray.200")}
                 >
                     {label}
                 </Text>
                 {children && (
                     <Icon
                         as={ChevronDownIcon}
-                        transition={'all .25s ease-in-out'}
-                        transform={isOpen ? 'rotate(180deg)' : ''}
+                        transition={"all .25s ease-in-out"}
+                        transform={isOpen ? "rotate(180deg)" : ""}
                         w={6}
                         h={6}
                     />
@@ -266,15 +266,15 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
             <Collapse
                 in={isOpen}
                 animateOpacity
-                style={{ marginTop: '0!important' }}
+                style={{ marginTop: "0!important" }}
             >
                 <Stack
                     mt={2}
                     pl={4}
                     borderLeft={1}
-                    borderStyle={'solid'}
-                    borderColor={useColorModeValue('gray.200', 'gray.700')}
-                    align={'start'}
+                    borderStyle={"solid"}
+                    borderColor={useColorModeValue("gray.200", "gray.700")}
+                    align={"start"}
                 >
                     {children &&
                         children.map(child => (
@@ -297,41 +297,41 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
     {
-        label: 'Inspiration',
+        label: "Inspiration",
         children: [
             {
-                label: 'Explore Design Work',
-                subLabel: 'Trending Design to inspire you',
-                href: '#',
+                label: "Explore Design Work",
+                subLabel: "Trending Design to inspire you",
+                href: "#",
             },
             {
-                label: 'New & Noteworthy',
-                subLabel: 'Up-and-coming Designers',
-                href: '#',
+                label: "New & Noteworthy",
+                subLabel: "Up-and-coming Designers",
+                href: "#",
             },
         ],
     },
     {
-        label: 'Find Work',
+        label: "Find Work",
         children: [
             {
-                label: 'Job Board',
-                subLabel: 'Find your dream design job',
-                href: '#',
+                label: "Job Board",
+                subLabel: "Find your dream design job",
+                href: "#",
             },
             {
-                label: 'Freelance Projects',
-                subLabel: 'An exclusive list for contract work',
-                href: '#',
+                label: "Freelance Projects",
+                subLabel: "An exclusive list for contract work",
+                href: "#",
             },
         ],
     },
     {
-        label: 'Learn Design',
-        href: '#',
+        label: "Learn Design",
+        href: "#",
     },
     {
-        label: 'Hire Designers',
-        href: '#',
+        label: "Hire Designers",
+        href: "#",
     },
 ];

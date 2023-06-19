@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
     Box,
     Heading,
@@ -14,11 +14,11 @@ import {
     useColorModeValue,
     Container,
     VStack,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 interface IBlogTags {
     tags: Array<string>;
-    marginTop?: SpaceProps['marginTop'];
+    marginTop?: SpaceProps["marginTop"];
 }
 
 const BlogTags: React.FC<IBlogTags> = props => {
@@ -27,7 +27,7 @@ const BlogTags: React.FC<IBlogTags> = props => {
             {props.tags.map(tag => {
                 return (
                     <Tag
-                        size={'md'}
+                        size={"md"}
                         variant="solid"
                         colorScheme="orange"
                         key={tag}
@@ -63,12 +63,12 @@ export const BlogAuthor: React.FC<BlogAuthorProps> = props => {
 
 const ArticleList = () => {
     return (
-        <Container maxW={'7xl'} p="12">
+        <Container maxW={"7xl"} p="12">
             <Heading as="h1">Stories by Chakra Templates</Heading>
             <Box
-                marginTop={{ base: '1', sm: '5' }}
+                marginTop={{ base: "1", sm: "5" }}
                 display="flex"
-                flexDirection={{ base: 'column', sm: 'row' }}
+                flexDirection={{ base: "column", sm: "row" }}
                 justifyContent="space-between"
             >
                 <Box
@@ -79,19 +79,19 @@ const ArticleList = () => {
                     alignItems="center"
                 >
                     <Box
-                        width={{ base: '100%', sm: '85%' }}
+                        width={{ base: "100%", sm: "85%" }}
                         zIndex="2"
-                        marginLeft={{ base: '0', sm: '5%' }}
+                        marginLeft={{ base: "0", sm: "5%" }}
                         marginTop="5%"
                     >
                         <Link
                             textDecoration="none"
-                            _hover={{ textDecoration: 'none' }}
+                            _hover={{ textDecoration: "none" }}
                         >
                             <Image
                                 borderRadius="lg"
                                 src={
-                                    'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80'
+                                    "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
                                 }
                                 alt="some good alt text"
                                 objectFit="contain"
@@ -106,8 +106,8 @@ const ArticleList = () => {
                     >
                         <Box
                             bgGradient={useColorModeValue(
-                                'radial(orange.600 1px, transparent 1px)',
-                                'radial(orange.300 1px, transparent 1px)',
+                                "radial(orange.600 1px, transparent 1px)",
+                                "radial(orange.300 1px, transparent 1px)",
                             )}
                             backgroundSize="20px 20px"
                             opacity="0.4"
@@ -120,13 +120,13 @@ const ArticleList = () => {
                     flex="1"
                     flexDirection="column"
                     justifyContent="center"
-                    marginTop={{ base: '3', sm: '0' }}
+                    marginTop={{ base: "3", sm: "0" }}
                 >
-                    <BlogTags tags={['Engineering', 'Product']} />
+                    <BlogTags tags={["Engineering", "Product"]} />
                     <Heading marginTop="1">
                         <Link
                             textDecoration="none"
-                            _hover={{ textDecoration: 'none' }}
+                            _hover={{ textDecoration: "none" }}
                         >
                             Blog article title
                         </Link>
@@ -134,7 +134,7 @@ const ArticleList = () => {
                     <Text
                         as="p"
                         marginTop="2"
-                        color={useColorModeValue('gray.700', 'gray.200')}
+                        color={useColorModeValue("gray.700", "gray.200")}
                         fontSize="lg"
                     >
                         Lorem Ipsum is simply dummy text of the printing and
@@ -145,7 +145,7 @@ const ArticleList = () => {
                     </Text>
                     <BlogAuthor
                         name="John Doe"
-                        date={new Date('2021-04-06T19:01:27Z')}
+                        date={new Date("2021-04-06T19:01:27Z")}
                     />
                 </Box>
             </Box>
@@ -155,37 +155,37 @@ const ArticleList = () => {
             <Divider marginTop="5" />
             <Wrap spacing="30px" marginTop="5">
                 <WrapItem
-                    width={{ base: '100%', sm: '45%', md: '45%', lg: '30%' }}
+                    width={{ base: "100%", sm: "45%", md: "45%", lg: "30%" }}
                 >
                     <Box w="100%">
                         <Box borderRadius="lg" overflow="hidden">
                             <Link
                                 textDecoration="none"
-                                _hover={{ textDecoration: 'none' }}
+                                _hover={{ textDecoration: "none" }}
                             >
                                 <Image
                                     transform="scale(1.0)"
                                     src={
-                                        'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80'
+                                        "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
                                     }
                                     alt="some text"
                                     objectFit="contain"
                                     width="100%"
                                     transition="0.3s ease-in-out"
                                     _hover={{
-                                        transform: 'scale(1.05)',
+                                        transform: "scale(1.05)",
                                     }}
                                 />
                             </Link>
                         </Box>
                         <BlogTags
-                            tags={['Engineering', 'Product']}
+                            tags={["Engineering", "Product"]}
                             marginTop="3"
                         />
                         <Heading fontSize="xl" marginTop="2">
                             <Link
                                 textDecoration="none"
-                                _hover={{ textDecoration: 'none' }}
+                                _hover={{ textDecoration: "none" }}
                             >
                                 Some blog title
                             </Link>
@@ -199,7 +199,7 @@ const ArticleList = () => {
                         </Text>
                         <BlogAuthor
                             name="John Doe"
-                            date={new Date('2021-04-06T19:01:27Z')}
+                            date={new Date("2021-04-06T19:01:27Z")}
                         />
                     </Box>
                 </WrapItem>

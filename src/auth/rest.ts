@@ -1,5 +1,5 @@
-import axios, { AxiosRequestConfig } from 'axios';
-import { catchAxiosError } from './error';
+import axios, { AxiosRequestConfig } from "axios";
+import { catchAxiosError } from "./error";
 
 const baseConfig: AxiosRequestConfig = {
     baseURL: process.env.BACKEND_URL,

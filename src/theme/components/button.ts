@@ -1,7 +1,7 @@
 const Button = {
     baseStyle: {
-        fontWeight: 'bold',
-        fontSize: '24px',
+        fontWeight: "bold",
+        fontSize: "24px",
     },
 };
 

@@ -11,18 +11,18 @@ import {
     Heading,
     Text,
     useColorModeValue,
-} from '@chakra-ui/react';
-import { useState } from 'react';
-import { Login } from '../../auth/login';
-import FacebookButton from '@/src/modules/components/button/facebook';
-import GoogleButton from '@/src/modules/components/button/google';
-import { LoginInputs } from '@/src/types/pages';
+} from "@chakra-ui/react";
+import { useState } from "react";
+import { Login } from "../../auth/login";
+import FacebookButton from "@/src/modules/components/button/facebook";
+import GoogleButton from "@/src/modules/components/button/google";
+import { LoginInputs } from "@/src/types/pages";
 
 function LoginPage() {
-    const initialValues: LoginInputs = { email: '', password: '' };
+    const initialValues: LoginInputs = { email: "", password: "" };
 
     const [inputs, setInputs] = useState(initialValues);
-    const [error, setError] = useState('');
+    const [error, setError] = useState("");
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -40,23 +40,23 @@ function LoginPage() {
 
     return (
         <Flex
-            minH={'100vh'}
-            align={'center'}
-            justify={'center'}
-            bg={useColorModeValue('gray.50', 'gray.800')}
+            minH={"100vh"}
+            align={"center"}
+            justify={"center"}
+            bg={useColorModeValue("gray.50", "gray.800")}
         >
-            <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-                <Stack align={'center'}>
-                    <Heading fontSize={'4xl'}>Sign in</Heading>
-                    <Text fontSize={'lg'} color={'gray.600'}>
-                        to enjoy all of our cool{' '}
-                        <Link color={'blue.400'}>features</Link> ✌️
+            <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+                <Stack align={"center"}>
+                    <Heading fontSize={"4xl"}>Sign in</Heading>
+                    <Text fontSize={"lg"} color={"gray.600"}>
+                        to enjoy all of our cool{" "}
+                        <Link color={"blue.400"}>features</Link> ✌️
                     </Text>
                 </Stack>
                 <Box
-                    rounded={'lg'}
-                    bg={useColorModeValue('white', 'gray.700')}
-                    boxShadow={'lg'}
+                    rounded={"lg"}
+                    bg={useColorModeValue("white", "gray.700")}
+                    boxShadow={"lg"}
                     p={8}
                 >
                     <Stack spacing={4}>
@@ -83,21 +83,21 @@ function LoginPage() {
                             </FormControl>
                             <Stack spacing={10}>
                                 <Stack
-                                    direction={{ base: 'column', sm: 'row' }}
-                                    align={'start'}
-                                    justify={'space-between'}
+                                    direction={{ base: "column", sm: "row" }}
+                                    align={"start"}
+                                    justify={"space-between"}
                                 >
                                     <Checkbox>Remember me</Checkbox>
-                                    <Link color={'blue.400'}>
+                                    <Link color={"blue.400"}>
                                         Forgot password?
                                     </Link>
                                 </Stack>
                                 <Button
                                     type="submit"
-                                    bg={'blue.400'}
-                                    color={'white'}
+                                    bg={"blue.400"}
+                                    color={"white"}
                                     _hover={{
-                                        bg: 'blue.500',
+                                        bg: "blue.500",
                                     }}
                                 >
                                     Sign in

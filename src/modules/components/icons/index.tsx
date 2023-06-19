@@ -1,4 +1,4 @@
-import { Icon } from '@chakra-ui/icons';
+import { Icon } from "@chakra-ui/icons";
 
 export default function useIcons() {
     function Metamask() {

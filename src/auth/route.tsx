@@ -1,7 +1,7 @@
-import ServerCookie from 'next-cookies';
-import React, { Component } from 'react';
-import { COOKIES } from './login';
-import { AuthToken } from './token';
+import ServerCookie from "next-cookies";
+import React, { Component } from "react";
+import { COOKIES } from "./login";
+import { AuthToken } from "./token";
 
 export type AuthProps = {
     auth: AuthToken;
@@ -15,7 +15,7 @@ export function privateRoute(WrappedComponent: any) {
             const initialProps = { auth };
             if (auth.isExpired) {
                 ctx.res.writeHead(302, {
-                    Location: '/login?redirected=true',
+                    Location: "/login?redirected=true",
                 });
                 ctx.res.end();
             }

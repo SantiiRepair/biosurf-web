@@ -1,4 +1,4 @@
-import jwtDecode from 'jwt-decode';
+import jwtDecode from "jwt-decode";
 
 export type DecodedToken = {
     readonly email: string;
@@ -9,7 +9,7 @@ export class AuthToken {
     readonly decodedToken: DecodedToken;
 
     constructor(readonly token?: string) {
-        this.decodedToken = { email: '', exp: 0 };
+        this.decodedToken = { email: "", exp: 0 };
         try {
             if (token) this.decodedToken = jwtDecode(token);
         } catch (e) {}

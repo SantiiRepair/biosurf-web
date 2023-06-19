@@ -1,6 +1,6 @@
 const styles = {
     global: {
-        'html, body': {},
+        "html, body": {},
     },
 };
 
