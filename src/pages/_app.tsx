@@ -20,7 +20,6 @@ function MyApp({ Component, pageProps: { ...pageProps } }: AppProps) {
                             <Component {...pageProps} />
                         </Flex>
                     </GoogleOAuthProvider>
-                    ;
                 </DAppProvider>
             </ChakraProvider>
         </>
