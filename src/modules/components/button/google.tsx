@@ -6,15 +6,12 @@ import axios from "axios";
 import { catchAxiosError } from "@/src/auth/error";
 import { useGoogleLogin } from "@react-oauth/google";
 import * as jose from "jose";
+import { COOKIES } from "@/src/auth/cookies";
 
 interface GoogleProps {
     text: string;
     action: string;
 }
-
-export const COOKIES = {
-    authToken: "smsuances.session",
-};
 
 export default function GoogleButton({ text, action }: GoogleProps) {
     const auth = useGoogleLogin({
@@ -22,7 +19,7 @@ export default function GoogleButton({ text, action }: GoogleProps) {
             let secret = new TextEncoder().encode(
                 process.env.ACCESS_TOKEN_SECRET!,
             );
-            
+
             const userInfo: any = await new Promise(resolve => {
                 const xhr = new XMLHttpRequest();
                 xhr.open(
@@ -48,28 +45,28 @@ export default function GoogleButton({ text, action }: GoogleProps) {
                 .setExpirationTime("24h")
                 .sign(secret);
 
-            const res: any = await axios
+            await axios
                 .post(`${process.env.BACKEND_URL}/user/google`, {
                     googleToken: token,
                     action: action,
                 })
-                .catch(catchAxiosError);
-
-            if (res.error) {
-                return res.error;
-            } else if (!res.data || !res.data.token) {
-                return "Something went wrong!";
-            }
-
-            if (action == "login") {
-                const { session } = res.data;
-                Cookie.set(COOKIES.authToken, session);
-                await Router.push("/dashboard");
-            } else if (action == "register") {
-                await Router.push("/login");
-            }
+                .catch(catchAxiosError)
+                .then(async (res: any) => {
+                    if (res.error) {
+                        return res.error;
+                    } else if (res.status == 200 && action == "register") {
+                        await Router.push("/login");
+                    } else if (!res.data || !res.data.session) {
+                        return "Something went wrong!";
+                    } else if (res.status == 200 && action == "login") {
+                        const { session } = res.data;
+                        Cookie.set(COOKIES.authToken, session);
+                        await Router.push("/dashboard");
+                    }
+                });
         },
     });
+
     return (
         <Center p={0}>
             <Button

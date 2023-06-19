@@ -1,7 +1,7 @@
 import ServerCookie from "next-cookies";
 import React, { Component } from "react";
-import { COOKIES } from "./login";
 import { AuthToken } from "./token";
+import { COOKIES } from "./cookies";
 
 export type AuthProps = {
     auth: AuthToken;
