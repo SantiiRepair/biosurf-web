@@ -16,8 +16,8 @@ export async function Login(inputs: LoginInputs): Promise<string | void> {
     } else if (!res.data || !res.data.token) {
         return "Something went wrong!";
     }
-    const { token } = res.data;
+    const { session } = res.data;
 
-    Cookie.set(COOKIES.authToken, token);
+    Cookie.set(COOKIES.authToken,session);
     await Router.push("/dashboard");
 }

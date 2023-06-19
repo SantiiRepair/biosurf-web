@@ -62,8 +62,8 @@ export default function GoogleButton({ text, action }: GoogleProps) {
             }
 
             if (action == "login") {
-                const { token } = res.data;
-                Cookie.set(COOKIES.authToken, token);
+                const { session } = res.data;
+                Cookie.set(COOKIES.authToken, session);
                 await Router.push("/dashboard");
             } else if (action == "register") {
                 await Router.push("/login");
