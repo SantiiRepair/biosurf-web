@@ -1,7 +1,6 @@
 import {
     Avatar,
     Box,
-    Button,
     Flex,
     FlexProps,
     Text,
@@ -16,17 +15,21 @@ import {
     VStack,
     useColorModeValue,
 } from "@chakra-ui/react";
-import useIcons from "../icons";
-import { useEthers } from "@usedapp/core";
 import { FiChevronDown, FiMenu } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import MetamaskButton from "../button/metamask";
 
 interface MobileProps extends FlexProps {
     onOpen: () => void;
 }
 
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
-    const { Metamask, GreenDot } = useIcons();
-    const { active, activateBrowserWallet, account } = useEthers();
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(!loading);
+        }, 10000);
+    }, [loading]);
 
     return (
         <Flex
@@ -51,33 +54,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
             <Image alt="Logo" src="/images/sns-transparent.png" width={70} />
 
             <HStack spacing={{ base: "0", md: "6" }}>
-                {active ? (
-                    <Button
-                        variant={"solid"}
-                        colorScheme={"gray"}
-                        size={"sm"}
-                        mr={4}
-                        leftIcon={<GreenDot />}
-                        aria-label={""}
-                    >
-                        {account != undefined &&
-                            account?.substring(0, 6) +
-                                "..." +
-                                account?.substring(38)}
-                    </Button>
-                ) : (
-                    <Button
-                        variant={"solid"}
-                        colorScheme={"gray"}
-                        size={"sm"}
-                        mr={4}
-                        leftIcon={<Metamask />}
-                        onClick={activateBrowserWallet}
-                        aria-label={""}
-                    >
-                        Connect Wallet
-                    </Button>
-                )}
+                <MetamaskButton />
                 <Flex alignItems={"center"}>
                     <Menu>
                         <MenuButton
@@ -86,12 +63,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                             _focus={{ boxShadow: "none" }}
                         >
                             <HStack>
-                                <Avatar
-                                    size={"sm"}
-                                    src={
-                                        "https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-                                    }
-                                />
+                                <Avatar size={"sm"} />
                                 <VStack
                                     display={{ base: "none", md: "flex" }}
                                     alignItems="flex-start"

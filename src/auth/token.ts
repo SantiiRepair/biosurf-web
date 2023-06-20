@@ -27,7 +27,7 @@ export class AuthToken {
         return !this.isExpired;
     }
 
-    get authorizationString() {
+    get authorization() {
         return `Bearer ${this.token}`;
     }
 }
