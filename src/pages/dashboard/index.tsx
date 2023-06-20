@@ -46,7 +46,7 @@ function Dashboard({ children }: { children: ReactNode }) {
 
 Dashboard.getInitialProps = async ({ auth }: AuthProps): Promise<Props> => {
     let message = "Something unexpected happened!";
-    const res: any = await get("/user/restricted", {
+    const res: any = await get("/user/info", {
         headers: {
             Authorization: auth.authorization,
         },

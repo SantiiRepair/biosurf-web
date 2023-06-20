@@ -1,9 +1,8 @@
 import Cookie from "js-cookie";
-import { useRouter } from "next/router";
+import Router from "next/router";
 import { COOKIES } from "./cookies";
 
-export const Logout = async () => {
-    const router = useRouter();
+export const logout = async () => {
     Cookie.remove(COOKIES.authToken);
-    await router.push("/login");
+    await Router.push("/login");
 };

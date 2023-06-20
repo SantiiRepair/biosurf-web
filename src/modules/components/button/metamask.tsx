@@ -7,7 +7,7 @@ function MetamaskButton() {
     const { active, activateBrowserWallet, account } = useEthers();
     return (
         <>
-            {active ? (
+            {account != undefined && active ? (
                 <Button
                     variant={"solid"}
                     colorScheme={"gray"}
