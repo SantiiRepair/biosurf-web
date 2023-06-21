@@ -12,9 +12,7 @@ export default class Document extends NextDocument {
                 </Head>
                 <body>
                     {/* Make Color mode to persists when you refresh the page. */}
-                    <ColorModeScript
-                        initialColorMode={"system"}
-                    />
+                    <ColorModeScript initialColorMode={"system"} />
                     <Main />
                     <NextScript />
                 </body>
