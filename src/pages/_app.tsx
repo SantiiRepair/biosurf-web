@@ -1,5 +1,10 @@
 import { AppProps } from "next/app";
-import { ChakraProvider, Flex } from "@chakra-ui/react";
+import {
+    ChakraProvider,
+    Flex,
+    cookieStorageManagerSSR,
+    localStorageManager,
+} from "@chakra-ui/react";
 import { DAppProvider } from "@usedapp/core";
 import { DefaultSeo } from "next-seo";
 import theme from "../theme";
@@ -42,7 +47,7 @@ function MyApp({ Component, pageProps: { ...pageProps } }: AppProps) {
     return (
         <>
             <DefaultSeo {...config} />
-            <ChakraProvider theme={theme} resetCSS>
+            <ChakraProvider resetCSS theme={theme}>
                 <DAppProvider config={{}}>
                     <GoogleOAuthProvider clientId={process.env.CLIENT_ID!}>
                         <NextNProgress
