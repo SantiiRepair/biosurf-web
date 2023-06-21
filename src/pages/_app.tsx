@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps: { ...pageProps } }: AppProps) {
     return (
         <>
             <DefaultSeo {...config} />
-            <ChakraProvider resetCSS theme={theme}>
+            <ChakraProvider theme={theme} resetCSS>
                 <DAppProvider config={{}}>
                     <GoogleOAuthProvider clientId={process.env.CLIENT_ID!}>
                         <NextNProgress
