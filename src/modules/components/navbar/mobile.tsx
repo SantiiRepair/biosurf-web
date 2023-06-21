@@ -16,22 +16,16 @@ import {
     useColorModeValue,
 } from "@chakra-ui/react";
 import { FiChevronDown, FiMenu } from "react-icons/fi";
-import { useEffect, useState } from "react";
 import MetamaskButton from "../button/metamask";
 import { logout } from "@/src/auth/logout";
 
 interface MobileProps extends FlexProps {
+    name: string;
+    lastname: string;
     onOpen: () => void;
 }
 
-const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
-    const [loading, setLoading] = useState(true);
-    useEffect(() => {
-        setTimeout(() => {
-            setLoading(!loading);
-        }, 10000);
-    }, [loading]);
-
+const MobileNav = ({ onOpen, name, lastname, ...rest }: MobileProps) => {
     return (
         <Flex
             ml={{ base: 0, md: 60 }}
@@ -71,9 +65,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                                     spacing="1px"
                                     ml="2"
                                 >
-                                    <Text fontSize="sm">Justina Clark</Text>
-                                    <Text fontSize="xs" color="gray.600">
-                                        Admin
+                                    <Text fontSize="sm">
+                                        {name} {lastname}
                                     </Text>
                                 </VStack>
                                 <Box display={{ base: "none", md: "flex" }}>
