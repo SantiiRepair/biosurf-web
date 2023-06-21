@@ -7,7 +7,7 @@ import Header from "../modules/components/header";
 import config from "../../next-seo.config";
 import "../styles/icons.scss";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import NextNProgress from "nextjs-progressbar";
 import { COOKIES } from "../auth/cookies";
@@ -15,9 +15,11 @@ import ServerCookie from "next-cookies";
 
 function MyApp({ Component, pageProps: { ...pageProps } }: AppProps) {
     const router = useRouter();
-    const session = ServerCookie(pageProps)[COOKIES.authToken];
+    const [hidden, setHidden] = useState(false);
 
     useEffect(() => {
+        const session = ServerCookie(pageProps)[COOKIES.authToken];
+        setHidden(session != undefined && true);
         const handleStart = () => {
             console.log("Starting to load the páge");
         };
@@ -35,7 +37,7 @@ function MyApp({ Component, pageProps: { ...pageProps } }: AppProps) {
             router.events.off("routeChangeComplete", handleComplete);
             router.events.off("routeChangeError", handleComplete);
         };
-    }, [router]);
+    }, [router, pageProps]);
 
     return (
         <>
@@ -48,9 +50,10 @@ function MyApp({ Component, pageProps: { ...pageProps } }: AppProps) {
                             startPosition={0.3}
                             stopDelayMs={200}
                             height={3}
+                            options={{ showSpinner: false }}
                         />
                         <Flex direction={"column"}>
-                            <Header hidden={session! ? false : true} />
+                            <Header hidden={hidden} />
                             <Component {...pageProps} />
                         </Flex>
                     </GoogleOAuthProvider>
