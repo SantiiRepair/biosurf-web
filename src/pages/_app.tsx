@@ -7,16 +7,50 @@ import Header from "../modules/components/header";
 import config from "../../next-seo.config";
 import "../styles/icons.scss";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import NextNProgress from "nextjs-progressbar";
+import { COOKIES } from "../auth/cookies";
+import ServerCookie from "next-cookies";
 
 function MyApp({ Component, pageProps: { ...pageProps } }: AppProps) {
+    const router = useRouter();
+    const session = ServerCookie(pageProps)[COOKIES.authToken];
+
+    useEffect(() => {
+        const handleStart = () => {
+            console.log("Starting to load the páge");
+        };
+
+        const handleComplete = () => {
+            console.log("Páge loaded successfuly");
+        };
+
+        router.events.on("routeChangeStart", handleStart);
+        router.events.on("routeChangeComplete", handleComplete);
+        router.events.on("routeChangeError", handleComplete);
+
+        return () => {
+            router.events.off("routeChangeStart", handleStart);
+            router.events.off("routeChangeComplete", handleComplete);
+            router.events.off("routeChangeError", handleComplete);
+        };
+    }, [router]);
+
     return (
         <>
             <DefaultSeo {...config} />
             <ChakraProvider resetCSS theme={theme}>
                 <DAppProvider config={{}}>
                     <GoogleOAuthProvider clientId={process.env.CLIENT_ID!}>
+                        <NextNProgress
+                            color="#29D"
+                            startPosition={0.3}
+                            stopDelayMs={200}
+                            height={3}
+                        />
                         <Flex direction={"column"}>
-                            <Header />
+                            <Header hidden={session! ? false : true} />
                             <Component {...pageProps} />
                         </Flex>
                     </GoogleOAuthProvider>

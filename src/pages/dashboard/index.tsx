@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useState } from "react";
 import {
     Box,
     useColorModeValue,
@@ -7,11 +7,11 @@ import {
     useDisclosure,
 } from "@chakra-ui/react";
 import Router from "next/router";
-import { AuthProps, privateRoute } from "@/src/auth/route";
 import { get } from "@/src/auth/rest";
 import { Props } from "@/src/types/pages";
 import SidebarContent from "@/src/modules/components/sidebar";
 import MobileNav from "@/src/modules/components/navbar/mobile";
+import { AuthProps, privateRoute } from "@/src/private/route";
 
 function Dashboard({ children }: { children: ReactNode }) {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -54,7 +54,7 @@ Dashboard.getInitialProps = async ({ auth }: AuthProps): Promise<Props> => {
 
     if (res.error) {
         message = res.error;
-        await Router.push("/login");
+        await Router.push("/login?redirected=true");
     } else if (res.data && res.data.message) {
         message = res.data.message;
     }

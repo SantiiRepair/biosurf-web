@@ -21,19 +21,13 @@ import {
     ChevronDownIcon,
     ChevronRightIcon,
 } from "@chakra-ui/icons";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 
-export default function Header() {
-    const router = useRouter();
+type HeaderProps = {
+    hidden: boolean;
+};
+
+export default function Header({ hidden }: HeaderProps) {
     const { isOpen, onToggle } = useDisclosure();
-    const [hidden, setHidden] = useState(false);
-
-    useEffect(() => {
-        if (router.asPath == "/dashboard") {
-            setHidden(true);
-        }
-    }, [router.asPath]);
 
     return (
         <Box hidden={hidden}>
