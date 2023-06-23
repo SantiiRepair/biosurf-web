@@ -30,12 +30,11 @@
         "nextjs-progressbar": "^0.0.16",
         "react": "18.2.0",
         "react-dom": "18.2.0",
-        "react-facebook-auth": "^1.4.0",
+        "react-facebook": "^9.0.12",
         "react-icons": "^4.8.0"
     },
     "devDependencies": {
         "@types/js-cookie": "^3.0.3",
-        "@types/jsonwebtoken": "^9.0.2",
         "@types/node": "20.1.2",
         "@types/react": "18.2.6",
         "@types/react-dom": "18.2.4",

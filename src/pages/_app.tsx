@@ -1,10 +1,5 @@
 import { AppProps } from "next/app";
-import {
-    ChakraProvider,
-    Flex,
-    cookieStorageManagerSSR,
-    localStorageManager,
-} from "@chakra-ui/react";
+import { ChakraProvider, Flex } from "@chakra-ui/react";
 import { DAppProvider } from "@usedapp/core";
 import { DefaultSeo } from "next-seo";
 import theme from "../theme";
@@ -17,6 +12,7 @@ import { useRouter } from "next/router";
 import NextNProgress from "nextjs-progressbar";
 import { COOKIES } from "../auth/cookies";
 import ServerCookie from "next-cookies";
+import { FacebookProvider } from "react-facebook";
 
 function MyApp({ Component, pageProps: { ...pageProps } }: AppProps) {
     const router = useRouter();
@@ -49,18 +45,22 @@ function MyApp({ Component, pageProps: { ...pageProps } }: AppProps) {
             <DefaultSeo {...config} />
             <ChakraProvider resetCSS theme={theme}>
                 <DAppProvider config={{}}>
-                    <GoogleOAuthProvider clientId={process.env.GOOGLE_CLIENT_ID!}>
-                        <NextNProgress
-                            color="#29D"
-                            startPosition={0.3}
-                            stopDelayMs={200}
-                            height={3}
-                            options={{ showSpinner: false }}
-                        />
-                        <Flex direction={"column"}>
-                            <Header hidden={hidden} />
-                            <Component {...pageProps} />
-                        </Flex>
+                    <GoogleOAuthProvider
+                        clientId={process.env.GOOGLE_CLIENT_ID!}
+                    >
+                        <FacebookProvider appId={process.env.FACEBOOK_APP_ID!}>
+                            <NextNProgress
+                                color="#29D"
+                                startPosition={0.3}
+                                stopDelayMs={200}
+                                height={3}
+                                options={{ showSpinner: false }}
+                            />
+                            <Flex direction={"column"}>
+                                <Header hidden={hidden} />
+                                <Component {...pageProps} />
+                            </Flex>
+                        </FacebookProvider>
                     </GoogleOAuthProvider>
                 </DAppProvider>
             </ChakraProvider>
