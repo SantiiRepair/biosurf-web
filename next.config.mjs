@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-    async redirects() {
+    reactStrictMode: true,
+    experimental: {
+        appDir: true,
+    }, async redirects() {
         return [
             {
                 source: "/login",
