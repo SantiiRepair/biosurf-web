@@ -6,26 +6,26 @@ import { AuthProps, privateRoute } from "@/src/private/route";
 import Image from "next/image"
 import { Activity, CreditCard, DollarSign, Download, Users } from "lucide-react"
 
-import { Button } from "@/src/registry/new-york/ui/button"
+import { Button } from "@/src/ui/registry/new-york/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/src/registry/new-york/ui/card"
+} from "@/src/ui/registry/new-york/ui/card"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/src/registry/new-york/ui/tabs"
-import { CalendarDateRangePicker } from "@/src/components/date-range-picker"
-import { DsNav } from "@/src/components/ds-nav"
-import { Overview } from "@/src/components/overview"
-import { RecentSales } from "@/src/components/recent-sales"
-import { Search } from "@/src/components/search"
-import { UserNav } from "@/src/components/user-nav"
+} from "@/src/ui/registry/new-york/ui/tabs"
+import { CalendarDateRangePicker } from "@/src/ui/components/date-range-picker"
+import { DsNav } from "@/src/ui/components/ds-nav"
+import { Overview } from "@/src/ui/components/overview"
+import { RecentSales } from "@/src/ui/components/recent-sales"
+import { Search } from "@/src/ui/components/search"
+import { UserNav } from "@/src/ui/components/user-nav"
 
 type DashboardProps = {
     name: string;

@@ -6,6 +6,11 @@ import FacebookButton from "@/src/modules/components/button/facebook";
 import { Register } from "@/src/auth/register";
 import { RegisterInputs } from "@/src/types/pages";
 import axios from "axios";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/src/ui/registry/new-york/ui/card";
+import { Button } from "@/src/ui/registry/new-york/ui/button";
+import { Icons } from "@/src/ui/components/icons";
+import { Label } from "@/src/ui/registry/new-york/ui/label";
+import { Input } from "@/src/ui/registry/new-york/ui/input";
 
 export function CreateAccount() {
     const [ipv4, setIpv4] = useState("");

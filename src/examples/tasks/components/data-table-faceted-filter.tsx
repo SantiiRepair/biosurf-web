@@ -2,7 +2,7 @@ import * as React from "react"
 import { Column } from "@tanstack/react-table"
 import { Check, LucideIcon, PlusCircle } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/src/ui/lib/utils"
 import { Badge } from "@/registry/new-york/ui/badge"
 import { Button } from "@/registry/new-york/ui/button"
 import {

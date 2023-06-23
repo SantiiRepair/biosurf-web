@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { ListMusic, PlusCircle } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/src/ui/lib/utils"
 import { AspectRatio } from "@/registry/new-york/ui/aspect-ratio"
 import {
   ContextMenu,

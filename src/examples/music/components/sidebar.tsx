@@ -10,7 +10,7 @@ import {
   User,
 } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/src/ui/lib/utils"
 import { Button } from "@/registry/new-york/ui/button"
 import { ScrollArea } from "@/registry/new-york/ui/scroll-area"
 

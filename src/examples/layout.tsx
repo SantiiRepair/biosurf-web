@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/src/ui/lib/utils"
 import { ExamplesNav } from "@/components/examples-nav"
 import {
   PageHeader,

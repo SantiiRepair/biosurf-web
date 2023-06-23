@@ -1,15 +1,15 @@
 import { LoginInputs } from "@/src/types/pages";
-import { Icons } from "@/src/components/icons";
-import { Input } from "@/src/registry/new-york/ui/input";
-import { Label } from "@/src/registry/new-york/ui/label";
+import { Icons } from "@/src/ui/components/icons";
+import { Input } from "@/src/ui/registry/new-york/ui/input";
+import { Label } from "@/src/ui/registry/new-york/ui/label";
 import { Login } from "@/src/auth/login";
 import { useState } from "react";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Command } from "lucide-react";
-import { cn } from "@/src/lib/utils";
-import { buttonVariants,Button } from "@/src/registry/new-york/ui/button";
+import { cn } from "@/src/ui/lib/utils";
+import { buttonVariants,Button } from "@/src/ui/registry/new-york/ui/button";
 
 export const metadata: Metadata = {
     title: "Authentication",
