@@ -2,7 +2,7 @@ import { AppProps } from "next/app";
 import { ChakraProvider, Flex } from "@chakra-ui/react";
 import { DAppProvider } from "@usedapp/core";
 import { DefaultSeo } from "next-seo";
-import theme from "../theme";
+import { ThemeProvider } from "../theme";
 import Header from "../modules/components/header";
 import config from "../../next-seo.config";
 import "../styles/icons.scss";
@@ -43,7 +43,7 @@ function MyApp({ Component, pageProps: { ...pageProps } }: AppProps) {
     return (
         <>
             <DefaultSeo {...config} />
-            <ChakraProvider resetCSS theme={theme}>
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
                 <DAppProvider config={{}}>
                     <GoogleOAuthProvider
                         clientId={process.env.GOOGLE_CLIENT_ID!}
@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps: { ...pageProps } }: AppProps) {
                         </FacebookProvider>
                     </GoogleOAuthProvider>
                 </DAppProvider>
-            </ChakraProvider>
+            </ThemeProvider>
         </>
     );
 }

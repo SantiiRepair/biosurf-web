@@ -7,8 +7,7 @@ export default class Document extends NextDocument {
             <Html>
                 <Head>
                     <link rel="shortcut icon" href="/favicon.ico" />
-                    <link rel="apple-touch-icon" href="/img/logo.svg" />
-                    <meta name="description" content="Biosurf NFT" />
+                    <link rel="apple-touch-icon" href="/favicon.ico" />
                 </Head>
                 <body>
                     {/* Make Color mode to persists when you refresh the page. */}
