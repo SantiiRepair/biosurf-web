@@ -5,7 +5,7 @@ import Home from "../pages/home";
 const Index = () => (
     <Container height="100%" bg={"#000"}>
         <Home />
-        <Footer/>
+        <Footer />
     </Container>
 );
 

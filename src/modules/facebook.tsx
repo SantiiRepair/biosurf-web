@@ -1,4 +1,3 @@
-
 import { FaFacebook } from "react-icons/fa";
 import { useLogin } from "react-facebook";
 import { Button } from "../components/ui/button";
@@ -23,10 +22,7 @@ export default function FacebookButton({ text }: FacebookProps) {
     }
 
     return (
-        <Button
-            variant={"outline"}
-            onClick={() => auth()}
-        >
+        <Button variant={"outline"} onClick={() => auth()}>
             <FaFacebook />
             <p className="leading-7 [&:not(:first-child)]:mt-6">{text}</p>
         </Button>

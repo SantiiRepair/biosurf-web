@@ -1,4 +1,3 @@
-
 import { FcGoogle } from "react-icons/fc";
 import Cookie from "js-cookie";
 import Router from "next/router";
@@ -74,7 +73,8 @@ export default function GoogleButton({ text, action }: GoogleProps) {
             onClick={() => {
                 auth();
             }}
-        ><FcGoogle />
+        >
+            <FcGoogle />
             <p className="leading-7 [&:not(:first-child)]:mt-6">{text}</p>
         </Button>
     );

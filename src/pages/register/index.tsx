@@ -1,17 +1,22 @@
-
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { RegisterInputs } from "@/src/types/pages";
 import { Register } from "@/src/auth/register";
 import axios from "axios";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/src/components/ui/card";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/src/components/ui/card";
 import { Button } from "@/src/components/ui/button";
 import { Icons } from "@/src/examples/playground/components/icons";
 import { Input } from "@/src/components/ui/input";
 import { Label } from "@/src/components/ui/label";
 import GoogleButton from "@/src/modules/google";
 import FacebookButton from "@/src/modules/facebook";
-
 
 export function CreateAccount() {
     const [ipv4, setIpv4] = useState("");
@@ -53,7 +58,10 @@ export function CreateAccount() {
             </CardHeader>
             <CardContent className="grid gap-4">
                 <div className="grid grid-cols-2 gap-6">
-                    <GoogleButton text={"Sign up with Google"} action={"register"} />
+                    <GoogleButton
+                        text={"Sign up with Google"}
+                        action={"register"}
+                    />
                     <FacebookButton text={"Sign up with Facebook"} />
                 </div>
                 <div className="relative">

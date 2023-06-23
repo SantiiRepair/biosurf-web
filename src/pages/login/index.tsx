@@ -1,20 +1,14 @@
-import { LoginInputs } from "@/src/types/pages";
-import { Icons } from "@/src/ui/components/icons";
-import { Input } from "@/src/ui/registry/new-york/ui/input";
-import { Label } from "@/src/ui/registry/new-york/ui/label";
 import { Login } from "@/src/auth/login";
+import { LoginInputs } from "@/src/types/pages";
 import { useState } from "react";
-import { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { Command } from "lucide-react";
-import { cn } from "@/src/ui/lib/utils";
-import { buttonVariants,Button } from "@/src/ui/registry/new-york/ui/button";
-
-export const metadata: Metadata = {
-    title: "Authentication",
-    description: "Authentication forms built using the components.",
-};
+import { Command, Link } from "lucide-react";
+import { buttonVariants } from "@/src/components/ui/button";
+import { Label } from "@/src/components/ui/label";
+import { cn } from "@/src/lib/utils";
+import { Input } from "@/src/components/ui/input";
+import { Button } from "@chakra-ui/react";
+import { Icons } from "@/src/examples/playground/components/icons";
 
 export default function LoginPage() {
     const [isLoading, setIsLoading] = useState<boolean>(false);
