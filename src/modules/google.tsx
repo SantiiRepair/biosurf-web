@@ -1,4 +1,4 @@
-import { Button, Center, Text } from "@chakra-ui/react";
+
 import { FcGoogle } from "react-icons/fc";
 import Cookie from "js-cookie";
 import Router from "next/router";
@@ -7,6 +7,7 @@ import { catchAxiosError } from "@/src/auth/error";
 import { useGoogleLogin } from "@react-oauth/google";
 import * as jose from "jose";
 import { COOKIES } from "@/src/auth/cookies";
+import { Button } from "../components/ui/button";
 
 interface GoogleProps {
     text: string;
@@ -68,20 +69,13 @@ export default function GoogleButton({ text, action }: GoogleProps) {
     });
 
     return (
-        <Center p={0}>
-            <Button
-                w={"full"}
-                maxW={"md"}
-                variant={"outline"}
-                leftIcon={<FcGoogle />}
-                onClick={() => {
-                    auth();
-                }}
-            >
-                <Center>
-                    <Text>{text}</Text>
-                </Center>
-            </Button>
-        </Center>
+        <Button
+            variant={"outline"}
+            onClick={() => {
+                auth();
+            }}
+        ><FcGoogle />
+            <p className="leading-7 [&:not(:first-child)]:mt-6">{text}</p>
+        </Button>
     );
 }

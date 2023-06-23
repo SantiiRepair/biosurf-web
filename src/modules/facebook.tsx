@@ -1,6 +1,7 @@
-import { Button, Center, Text } from "@chakra-ui/react";
+
 import { FaFacebook } from "react-icons/fa";
 import { useLogin } from "react-facebook";
+import { Button } from "../components/ui/button";
 
 interface FacebookProps {
     text: string;
@@ -22,18 +23,12 @@ export default function FacebookButton({ text }: FacebookProps) {
     }
 
     return (
-        <Center p={0}>
-            <Button
-                w={"full"}
-                maxW={"md"}
-                colorScheme={"facebook"}
-                leftIcon={<FaFacebook />}
-                onClick={() => auth()}
-            >
-                <Center>
-                    <Text>{text}</Text>
-                </Center>
-            </Button>
-        </Center>
+        <Button
+            variant={"outline"}
+            onClick={() => auth()}
+        >
+            <FaFacebook />
+            <p className="leading-7 [&:not(:first-child)]:mt-6">{text}</p>
+        </Button>
     );
 }

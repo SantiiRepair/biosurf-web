@@ -3,7 +3,6 @@ import { ChakraProvider, Flex } from "@chakra-ui/react";
 import { DAppProvider } from "@usedapp/core";
 import { DefaultSeo } from "next-seo";
 import { ThemeProvider } from "../theme";
-import Header from "../modules/components/header";
 import config from "../../next-seo.config";
 import "../styles/icons.scss";
 import { GoogleOAuthProvider } from "@react-oauth/google";
@@ -56,10 +55,7 @@ function MyApp({ Component, pageProps: { ...pageProps } }: AppProps) {
                                 height={3}
                                 options={{ showSpinner: false }}
                             />
-                            <Flex direction={"column"}>
-                                <Header hidden={hidden} />
-                                <Component {...pageProps} />
-                            </Flex>
+                            <Component {...pageProps} />
                         </FacebookProvider>
                     </GoogleOAuthProvider>
                 </DAppProvider>

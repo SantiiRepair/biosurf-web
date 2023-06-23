@@ -1,16 +1,17 @@
 
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import GoogleButton from "@/src/modules/components/button/google";
-import FacebookButton from "@/src/modules/components/button/facebook";
-import { Register } from "@/src/auth/register";
 import { RegisterInputs } from "@/src/types/pages";
+import { Register } from "@/src/auth/register";
 import axios from "axios";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/src/ui/registry/new-york/ui/card";
-import { Button } from "@/src/ui/registry/new-york/ui/button";
-import { Icons } from "@/src/ui/components/icons";
-import { Label } from "@/src/ui/registry/new-york/ui/label";
-import { Input } from "@/src/ui/registry/new-york/ui/input";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/src/components/ui/card";
+import { Button } from "@/src/components/ui/button";
+import { Icons } from "@/src/examples/playground/components/icons";
+import { Input } from "@/src/components/ui/input";
+import { Label } from "@/src/components/ui/label";
+import GoogleButton from "@/src/modules/google";
+import FacebookButton from "@/src/modules/facebook";
+
 
 export function CreateAccount() {
     const [ipv4, setIpv4] = useState("");
@@ -52,14 +53,8 @@ export function CreateAccount() {
             </CardHeader>
             <CardContent className="grid gap-4">
                 <div className="grid grid-cols-2 gap-6">
-                    <Button variant="outline">
-                        <Icons.gitHub className="mr-2 h-4 w-4" />
-                        Github
-                    </Button>
-                    <Button variant="outline">
-                        <Icons.google className="mr-2 h-4 w-4" />
-                        Google
-                    </Button>
+                    <GoogleButton text={"Sign up with Google"} action={"register"} />
+                    <FacebookButton text={"Sign up with Facebook"} />
                 </div>
                 <div className="relative">
                     <div className="absolute inset-0 flex items-center">
